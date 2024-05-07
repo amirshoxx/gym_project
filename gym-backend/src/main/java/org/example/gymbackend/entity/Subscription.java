@@ -20,5 +20,12 @@ public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String title;
+    private Date startTime;
+    private Date endTime;
+    private SubscriptionType subscriptionType;
+    private Double price;
+    private Boolean status;
+    private Boolean limited;
+    private User user;
+    private Integer dayCount;
 }
