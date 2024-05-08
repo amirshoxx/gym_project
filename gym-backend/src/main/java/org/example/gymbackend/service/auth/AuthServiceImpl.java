@@ -43,7 +43,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ResponseEntity<?> loginUser(LoginDto loginDto) {
         manager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
-        User users = userRepo.findByUsername(loginDto.getUsername()).orElseThrow();
+        User users = userRepo.findByFullName(loginDto.getUsername()).orElseThrow();
         UUID id = users.getId();
         Map<String, String> tokens = Map.of("token1", jwtService.getUserToken(users), "token2", jwtService.getUserRefreshToken(users),"id", String.valueOf(id));
         return ResponseEntity.ok(tokens);
@@ -52,7 +52,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ResponseEntity<?> refreshToken(String refreshToken) {
         String id = jwtService.parseToken(refreshToken);
-        User users = userRepo.findById(Integer.valueOf(id)).orElseThrow();
+        User users = userRepo.findById(UUID.fromString(id)).orElseThrow();
         return ResponseEntity.ok(jwtService.getUserToken(users));
     }
 }
