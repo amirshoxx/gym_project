@@ -1,11 +1,10 @@
-package org.example.gymbackend.cotroller;
+package org.example.gymbackend.controller;
 
 import org.example.gymbackend.dto.GymDto;
 import org.example.gymbackend.entity.Gym;
 import org.example.gymbackend.repository.GymRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
