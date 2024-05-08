@@ -1,4 +1,3 @@
-import {FaHome} from "react-icons/fa"
 import {useNavigate} from "react-router-dom";
 
 function Gym() {
@@ -13,7 +12,7 @@ function Gym() {
     return (
         <div>
              <div>
-                 
+<h1>GYM</h1>
              </div>
         </div>
     );
