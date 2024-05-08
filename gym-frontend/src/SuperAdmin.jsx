@@ -1,4 +1,3 @@
-import {FaHome} from "react-icons/fa"
 import {useNavigate} from "react-router-dom";
 
 function SuperAdmin() {
@@ -7,7 +6,7 @@ function SuperAdmin() {
 
 
     function navigateSettings() {
-        navigate("/settings")
+        navigate("/superSettings")
     }
 
     function navigateGym() {
@@ -16,11 +15,10 @@ function SuperAdmin() {
 
 
     return (
-        <div>
-            <div>
-                <button onClick={()=>navigateGym()} className={"buttonS"}>GYMS</button>
-                <button onClick={()=>navigateSettings()} className={"buttonS"}>Sozlamalar</button>
-            </div>
+        <div className={"container d-flex justify-content-center"}>
+                <button onClick={()=>navigateGym()} className={"btn btn-secondary m-1 rounded-0"}>GYMS</button>
+
+                <button onClick={()=>navigateSettings()} className={"btn btn-secondary m-1 rounded-0"}>Sozlamalar</button>
         </div>
     );
 }
