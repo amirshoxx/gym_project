@@ -60,12 +60,23 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                     execute(sendMessage);
                     userRepo.save(user);
                 } else if (user.getStatus().equals(Status.SET_PASSWORD)) {
-                    user.setStatus(Status.SET_SETTING);
 
-                    sendMessage.setReplyMarkup(genSettingButtons());
-                    sendMessage.setChatId(chatId);
-                    execute(sendMessage);
-                    userRepo.save(user);
+                    String text = message.getText();
+                    Optional<User> optionalUser = userRepo.findByPassword(text.toString());
+                    if (optionalUser.isPresent()){
+                        user.setStatus(Status.SET_SETTING);
+                        sendMessage.setReplyMarkup(genSettingButtons());
+                        sendMessage.setChatId(chatId);
+                        execute(sendMessage);
+                        userRepo.save(user);
+                    }else{
+                        user.setStatus(Status.SET_PASSWORD);
+                        sendMessage.setText("Iltimos passwordni to'gri yuboring yuboring!");
+                        sendMessage.setChatId(chatId);
+                        execute(sendMessage);
+                        userRepo.save(user);
+                    }
+
 
                 }
 
