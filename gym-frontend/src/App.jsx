@@ -5,6 +5,8 @@ import Home from "./home/Home.jsx";
 import Gym from "./Gym.jsx";
 import SuperAdmin from "./SuperAdmin.jsx";
 import SuperSettings from "./SuperSettings.jsx";
+import AddAdmin from "./AddAdmin.jsx";
+
 function App() {
 
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path={"/gym"} element={<Gym/>} />
           <Route path={"/superAdmin"} element={<SuperAdmin/>} />
           <Route path={"/superSettings"} element={<SuperSettings/>} />
+          <Route path={"/addAdmin"} element={<AddAdmin/>} />
+
           {/*<Route path={"/register"} element={<Regis />} />*/}
         </Routes>
   );

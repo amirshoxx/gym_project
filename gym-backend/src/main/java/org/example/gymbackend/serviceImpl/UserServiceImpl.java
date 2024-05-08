@@ -10,6 +10,7 @@ import org.example.gymbackend.repository.RoleRepo;
 import org.example.gymbackend.repository.UserRepo;
 import org.example.gymbackend.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,13 +21,14 @@ public class UserServiceImpl implements UserService {
     private final GymRepo gymRepo;
     private final UserRepo userRepo;
     private final RoleRepo  roleRepo;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override
     public ResponseEntity<?> saveAdmin(AdminDto dto) {
         User user = userRepo.findByPhoneNumber(dto.phoneNumber()).orElseThrow();
         user.setFullName(dto.fullName());
-        user.setPassword(dto.password());
+        user.setPassword(passwordEncoder.encode(dto.password()));
         List<Role> roleAdmin = roleRepo.findAllByName("ROLE_ADMIN");
         user.setRoles(roleAdmin);
         User userUpdatedToAdmin = userRepo.save(user);
