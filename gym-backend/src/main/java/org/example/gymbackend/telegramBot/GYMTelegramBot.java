@@ -1,6 +1,5 @@
 package org.example.gymbackend.telegramBot;
 
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.example.gymbackend.entity.Status;
 import org.example.gymbackend.entity.User;

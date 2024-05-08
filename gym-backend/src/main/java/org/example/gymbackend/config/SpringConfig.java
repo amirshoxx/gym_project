@@ -29,14 +29,13 @@ import java.util.ArrayList;
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class SpringConfig {
-   private final MyFilter myFilter;
-  private final   UserRepo userRepo;
-
+    private final MyFilter myFilter;
+    private final UserRepo userRepo;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors(AbstractHttpConfigurer::disable).csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
-                auth ->auth
+                auth -> auth
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/").permitAll()
@@ -55,7 +54,7 @@ public class SpringConfig {
             User user = userRepo.findByFullName(username)
                     .orElseThrow(() -> new UsernameNotFoundException("User Not found "));
             return new org.springframework.security.core.userdetails.User(
-                    user.getFullName(),
+                    user.getUsername(),
                     user.getPassword(),
                     new ArrayList<>()
             );
