@@ -1,4 +1,4 @@
-package org.example.gymbackend;
+package org.example.gymbackend.serviceImpl;
 
 import lombok.RequiredArgsConstructor;
 import org.example.gymbackend.dto.AdminDto;
