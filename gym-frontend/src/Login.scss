@@ -1,0 +1,64 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.big_mean {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('gym-senter.jpg');
+  background-size: cover;
+max-width: 100%;
+}
+
+
+
+.card h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.input-field input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.buttonS {
+  background-color: #ff6f8b;
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonS:hover {
+  background-color: #ff4f70;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 80%;
+  }
+}

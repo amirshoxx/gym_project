@@ -22,4 +22,9 @@ public class Gym {
     private UUID id;
     private String name;
     private String location;
+
+    public Gym(String name, String location) {
+        this.name = name;
+        this.location = location;
+    }
 }
