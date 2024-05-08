@@ -5,21 +5,16 @@ function Gym() {
 
     let navigate = useNavigate();
 
-
-    function navigateLogin() {
-        navigate("/login")
-    }
-
-    function navigateRegister() {
+    function navigateAdmin() {
         navigate("/add_admin")
     }
 
 
     return (
-        <div className={"bg-secondary-subtle w-100 d-flex align-items-center justify-content-between py-1 px-4"}>
-
-
-
+        <div>
+             <div>
+                 
+             </div>
         </div>
     );
 }
