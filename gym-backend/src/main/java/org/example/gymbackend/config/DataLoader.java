@@ -29,10 +29,9 @@ public class DataLoader implements CommandLineRunner {
                             new Role("ROLE_ADMIN"),
                             new Role("ROLE_SUPER_ADMIN"))
             );
-            userRepo.saveAll(Arrays.asList(
-                    new User("Annayev Istam","+998903405029", passwordEncoder.encode("123"), roles),
-                    new User("Bekzod","+998900809272", passwordEncoder.encode("123"), roles)
-            ));
+            userRepo.save(
+                    new User("Annayev Istam","+998903405029", passwordEncoder.encode("123"), roles)
+            );
 
         }
 

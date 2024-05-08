@@ -2,40 +2,53 @@ package org.example.gymbackend.telegramBot;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.apache.commons.io.FileUtils;
+import org.example.gymbackend.dto.AdminDto;
+import org.example.gymbackend.entity.Role;
 import org.example.gymbackend.entity.Status;
 import org.example.gymbackend.entity.User;
+import org.example.gymbackend.repository.RoleRepo;
 import org.example.gymbackend.repository.UserRepo;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
+import org.springframework.util.FileCopyUtils;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Contact;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.*;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 @Component
 public class GYMTelegramBot extends TelegramLongPollingBot {
     private final UserRepo userRepo;
+    private final RoleRepo roleRepo;
 
     @Autowired
-    public GYMTelegramBot(UserRepo userRepo) {
+    public GYMTelegramBot(UserRepo userRepo,RoleRepo roleRepo) {
         this.userRepo = userRepo;
+        this.roleRepo=roleRepo;
     }
+
 
     @Override
     public String getBotUsername() {
-        return "khamroyevHB_bot";
+        return "gym_bek_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "7113041141:AAE5Ru8NDzvrom_XAFWfFMTvYsPvIKfBUIM";
+        return "6833970681:AAHfG31E4e-KjOujk4lcoHowAVVbYV96Ggg";
     }
 
     @SneakyThrows
@@ -43,6 +56,10 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
 
         if (update.hasMessage()) {
+
+
+
+
             Message message = update.getMessage();
             Long chatId = message.getChatId();
             SendMessage sendMessage = new SendMessage();
@@ -50,13 +67,12 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
             if (message.hasText() ) {
 
 
-
                 if (message.getText().equalsIgnoreCase("/start") ) {
-                    user.setStatus(Status.SHARE_CONTACT);
 
+                    user.setStatus(Status.SHARE_CONTACT);
                     sendMessage.setText("Iltimos contactingizni yuboring!");
                     sendMessage.setReplyMarkup(genContactButtons());
-                    sendMessage.setChatId(chatId);
+                    sendMessage.setChatId(user.getChatId());
                     execute(sendMessage);
                     userRepo.save(user);
                 } else if (user.getStatus().equals(Status.SET_PASSWORD)) {
@@ -78,33 +94,71 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                     }
 
 
+                } else if (user.getStatus().equals(Status.SET_NAME)) {
+                    user.setStatus(Status.SET_IMAGE);
+                    System.out.println(message.getText());
+                    user.setFullName(message.getText());
+                    sendMessage.setText("Iltimos rasmingizni yuboring yuboring!");
+                    sendMessage.setChatId(chatId);
+                    execute(sendMessage);
+                    userRepo.save(user);
                 }
 
-            } else if (message.hasContact()) {
-
+            } else if (message.hasContact()) {;
                 if (user.getStatus().equals(Status.SHARE_CONTACT)){
 
                     Contact contact = message.getContact();
                     Optional<User> findUserOptional = userRepo.findByPhoneNumber(contact.getPhoneNumber());
                     if (findUserOptional.isPresent()) {
                         User findUser = findUserOptional.get();
-                        if (findUser.getAuthorities().equals("ROLE_ADMIN")) {
-                            user.setStatus(Status.SET_PASSWORD);
-                            sendMessage.setText("Iltimos parolingizni kiriting yuboring!");
-                            sendMessage.setChatId(chatId);
-                            execute(sendMessage);
+                        List<Role> roles = findUser.getRoles();
+                        Role admin = roleRepo.findByName("ROLE_ADMIN");
 
+                        for (Role role : roles) {
+                            if (role.equals(admin)){
+                                user.setStatus(Status.SET_PASSWORD);
+                                sendMessage.setText("Iltimos parolingizni kiriting yuboring!");
+                                sendMessage.setChatId(findUser.getChatId());
+                                System.out.println("salom");
+                                execute(sendMessage);
+                            }
                         }
-                        userRepo.save(user);
-                    }else {
+
+
+
+                        userRepo.save(findUser);
+                    }
+                    else {
+                        System.out.println(contact.getPhoneNumber());
+                        user.setStatus(Status.SET_NAME);
                         user.setPhoneNumber(contact.getPhoneNumber());
-                        user.setStatus(Status.SET_IMAGE);
-                        sendMessage.setText("Iltimos rasmingizni kiriting yuboring!");
-                        sendMessage.setChatId(chatId);
+                        System.out.println(message.getChat());
+                        sendMessage.setText("Assalom aleykum botimizga xush kelibsiz iltimos  ism sharifingizni kiriting!");
+                        sendMessage.setChatId(user.getChatId());
+
                         execute(sendMessage);
                         userRepo.save(user);
                     }
+
                     }
+
+            }
+            else if (message.hasPhoto()) {
+
+                if (user.getStatus().equals(Status.SET_IMAGE)){
+
+                    List<PhotoSize> photo = message.getPhoto();
+                    GetFile getFile = new GetFile(photo.get(0).getFileId());
+                    File file = execute(getFile);
+                    String fileUrl = file.getFileUrl(getBotToken());
+                    URL url = new URL(fileUrl);
+                    InputStream inputStream = url.openStream();
+                    FileUtils.copyInputStreamToFile(inputStream,new java.io.File(message.getPhoto().get(0).getFilePath()));
+                    System.out.println(fileUrl);
+                    System.out.println(message.getPhoto().get(0).getFilePath());
+
+                }
+
 
             }
         }

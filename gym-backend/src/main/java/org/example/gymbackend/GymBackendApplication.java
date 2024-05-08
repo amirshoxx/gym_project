@@ -1,6 +1,7 @@
 package org.example.gymbackend;
 
 import lombok.RequiredArgsConstructor;
+import org.example.gymbackend.repository.RoleRepo;
 import org.springframework.context.ApplicationContext;
 import lombok.RequiredArgsConstructor;
 import org.example.gymbackend.repository.UserRepo;
@@ -20,8 +21,9 @@ public class GymBackendApplication {
     public static void main(String[] args) throws TelegramApiException {
         ApplicationContext context = SpringApplication.run(GymBackendApplication.class, args);
         UserRepo userRepo = context.getBean(UserRepo.class);
+        RoleRepo roleRepo = context.getBean(RoleRepo.class);
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-        GYMTelegramBot gymTelegramBot = new GYMTelegramBot(userRepo);
+        GYMTelegramBot gymTelegramBot = new GYMTelegramBot(userRepo,roleRepo);
         telegramBotsApi.registerBot(gymTelegramBot);
 
     }

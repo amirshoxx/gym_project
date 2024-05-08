@@ -1,10 +1,7 @@
 package org.example.gymbackend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,7 +9,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "users")
@@ -29,7 +27,7 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Status status=Status.START;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
     public User(Long chatId) {
