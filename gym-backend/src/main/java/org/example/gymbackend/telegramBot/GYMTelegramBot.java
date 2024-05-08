@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor
 public class GYMTelegramBot extends TelegramLongPollingBot {
-    private final UserRepo userRepo;
+    @Autowired
+    UserRepo userRepo;
 
     @Override
     public String getBotUsername() {

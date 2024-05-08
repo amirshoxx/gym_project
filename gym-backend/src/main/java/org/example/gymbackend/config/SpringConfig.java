@@ -47,7 +47,7 @@ public class SpringConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetailsService userDetailsService = username -> userRepo.findByUsername(username).orElseThrow();
+        UserDetailsService userDetailsService = username -> userRepo.findByFullName(username).orElseThrow();
         return userDetailsService;
     }
 
