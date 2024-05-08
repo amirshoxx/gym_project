@@ -1,34 +1,31 @@
-import "react"
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import  { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+
 function Home() {
     const navigate = useNavigate();
     const [activeButton, setActiveButton] = useState(null);
+
     const handleNavigation = (path) => {
         navigate(path);
         setActiveButton(path);
     };
-    let key = localStorage.getItem("key")
+
+    let key = localStorage.getItem("key");
 
     useEffect(() => {
-
     }, [key]);
+
     return (
-        <div className={"menu"}>
-
-            {/*<div>*/}
-            {/*  <img src={} alt=""/>*/}
-            {/*</div>*/}
+        <div className="header">
             <div>
-
                 <button
                     className={activeButton === "/" ? "active" : ""}
                     onClick={() => handleNavigation("/")}
                 >
                     Home
                 </button>
-
-
             </div>
             <div>
                 <button
@@ -45,8 +42,6 @@ function Home() {
                     Finding
                 </button>
             </div>
-
-
         </div>
     );
 }

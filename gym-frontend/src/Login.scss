@@ -1,56 +1,64 @@
-// Login.scss
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.card {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  padding: 20px;
-  width: 300px;
-  margin: 0 auto;
+.big_mean {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('gym-senter.jpg');
+  background-size: cover;
+max-width: 100%;
+}
+
+
+
+.card h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .input-field {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .input-field input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
 }
 
 .input-field input:focus {
   outline: none;
-  border-color: #007bff;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .buttonS {
-  background-color: #007bff;
+  background-color: #ff6f8b;
   color: #ffffff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 15px 30px;
+  border-radius: 25px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .buttonS:hover {
-  background-color: #0056b3;
+  background-color: #ff4f70;
 }
 
-.button {
-  background-color: #28a745;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+@media screen and (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
 }
 
-.button:hover {
-  background-color: #218838;
+@media screen and (max-width: 480px) {
+  .card {
+    width: 80%;
+  }
 }
