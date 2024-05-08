@@ -29,6 +29,20 @@ public class User implements UserDetails {
     @ManyToMany
     private List<Role> roles;
 
+    public User(String fullName, String phoneNumber, String password, String image) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.image = image;
+    }
+
+    public User(String fullName, String phoneNumber, String password, List<Role> roles) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.roles = roles;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
