@@ -15,7 +15,7 @@ function SuperAdmin() {
 
 
     return (
-        <div className={"d-flex justify-content-center"}>
+        <div className={"container d-flex justify-content-center"}>
                 <button onClick={()=>navigateGym()} className={"btn btn-secondary m-1 rounded-0"}>GYMS</button>
 
                 <button onClick={()=>navigateSettings()} className={"btn btn-secondary m-1 rounded-0"}>Sozlamalar</button>
