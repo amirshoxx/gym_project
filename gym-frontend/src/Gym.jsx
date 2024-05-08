@@ -1,5 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 function Gym() {
 
@@ -10,14 +11,14 @@ function Gym() {
     const [gyms, setGyms] = useState([])
 
     useEffect(() => {
-
+        getGym()
     }, [])
 
 
     let navigate = useNavigate();
 
     function navigateAdmin() {
-        navigate("/add_admin")
+        navigate("/addAdmin")
     }
 
     function getGym() {
@@ -57,7 +58,8 @@ function Gym() {
                             <td>{itm.name}</td>
                             <td>{itm.location}</td>
                             <td>
-                                <button onClick={()=>navigateAdmin()} className={"btn btn-success rounded-0"}>Admin</button>
+                                <button onClick={() => navigateAdmin()} className={"btn btn-success rounded-0"}>Admin
+                                </button>
                             </td>
                         </tr>)
                     }
