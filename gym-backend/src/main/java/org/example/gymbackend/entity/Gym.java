@@ -1,14 +1,12 @@
 package org.example.gymbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -22,9 +20,6 @@ public class Gym {
     private UUID id;
     private String name;
     private String location;
-
-    public Gym(String name, String location) {
-        this.name = name;
-        this.location = location;
-    }
+    @OneToMany
+    private List<User> admins;
 }

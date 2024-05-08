@@ -1,13 +1,13 @@
-package org.example.gymbackend.cotroller;
+package org.example.gymbackend.controller;
 
 import org.example.gymbackend.dto.GymDto;
 import org.example.gymbackend.entity.Gym;
 import org.example.gymbackend.repository.GymRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -39,8 +39,11 @@ public class GymController {
     @PostMapping
     public ResponseEntity<?> postGym(@RequestBody GymDto gymDto) {
         Gym gym = new Gym(
+                UUID.randomUUID(),
                 gymDto.getName(),
-                gymDto.getLocation()
+                gymDto.getLocation(),
+                new ArrayList<>()
+
         );
         Gym save = gymRepo.save(gym);
         return ResponseEntity.ok(save);
