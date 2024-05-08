@@ -4,8 +4,9 @@ import org.example.gymbackend.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface RoleRepo extends JpaRepository<Role, Integer> {
+public interface RoleRepo extends JpaRepository<Role, Long> {
     List<Role> findAllByName(String name);
 
 

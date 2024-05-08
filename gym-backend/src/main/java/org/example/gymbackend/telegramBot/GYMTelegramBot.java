@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class GYMTelegramBot extends TelegramLongPollingBot {
+
     @Autowired
     UserRepo userRepo;
 
