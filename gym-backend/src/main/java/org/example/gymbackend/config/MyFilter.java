@@ -32,7 +32,7 @@ public class MyFilter extends OncePerRequestFilter {
             String token = request.getHeader("token");
             if (token != null) {
                 String id = jwtService.parseToken(token);
-                UserDetails users = userRepo.findById(UUID.randomUUID()).orElseThrow();
+                UserDetails users = userRepo.findById(UUID.fromString(id)).orElseThrow();
                 UsernamePasswordAuthenticationToken token1 = new UsernamePasswordAuthenticationToken(users.getUsername(),null,users.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(token1);
             }

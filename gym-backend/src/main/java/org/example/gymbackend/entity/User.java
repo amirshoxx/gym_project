@@ -26,8 +26,13 @@ public class User implements UserDetails {
     private String phoneNumber;
     private String password;
     private String image;
+    private Status status;
     @ManyToMany
     private List<Role> roles;
+
+    public User(Long chatId) {
+        this.chatId = chatId;
+    }
 
     public User(String fullName, String phoneNumber, String password, String image) {
         this.fullName = fullName;
