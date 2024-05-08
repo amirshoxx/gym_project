@@ -34,7 +34,8 @@ public class SpringConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/superadmin")
+                        auth.requestMatchers("/admin").permitAll().requestMatchers("/superadmin")
+
 
                 ).addFilterBefore((Filter) myFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
