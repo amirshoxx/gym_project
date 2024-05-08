@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -28,7 +29,11 @@ public class DataLoader implements CommandLineRunner {
                             new Role("ROLE_ADMIN"),
                             new Role("ROLE_SUPER_ADMIN"))
             );
-            userRepo.save(new User("Annayev Istam","+998903405029", passwordEncoder.encode("123"),roles));
+            userRepo.saveAll(Arrays.asList(
+                    new User("Annayev Istam","+998903405029", passwordEncoder.encode("123"), roles),
+                    new User("Bekzod","+998900809272", passwordEncoder.encode("123"), roles)
+            ));
+
         }
 
         }
