@@ -52,7 +52,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ResponseEntity<?> refreshToken(String refreshToken) {
         String id = jwtService.parseToken(refreshToken);
-        User users = userRepo.findById(Integer.valueOf(id)).orElseThrow();
+        User users = userRepo.findById(UUID.randomUUID()).orElseThrow();
         return ResponseEntity.ok(jwtService.getUserToken(users));
     }
 }

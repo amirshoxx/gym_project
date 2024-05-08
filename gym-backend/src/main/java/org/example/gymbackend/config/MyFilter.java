@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.UUID;
 
 @Component
 public class MyFilter extends OncePerRequestFilter {
@@ -31,7 +32,7 @@ public class MyFilter extends OncePerRequestFilter {
             String token = request.getHeader("token");
             if (token != null) {
                 String id = jwtService.parseToken(token);
-                UserDetails users = userRepo.findById(Integer.valueOf(id)).orElseThrow();
+                UserDetails users = userRepo.findById(UUID.randomUUID()).orElseThrow();
                 UsernamePasswordAuthenticationToken token1 = new UsernamePasswordAuthenticationToken(users.getUsername(),null,users.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(token1);
             }
