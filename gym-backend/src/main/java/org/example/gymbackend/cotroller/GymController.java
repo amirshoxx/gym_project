@@ -20,7 +20,7 @@ public class GymController {
 
 
     @GetMapping
-    public ResponseEntity<?> getCars() {
+    public ResponseEntity<?> getGym() {
         List<Gym> all = gymRepo.findAll();
         return ResponseEntity.ok(all);
     }
