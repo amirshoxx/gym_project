@@ -42,6 +42,7 @@ public class SpringConfig {
                         .requestMatchers("/refresh").permitAll()
                         .requestMatchers("/user","/user/admins","/user/super_admins").permitAll()
                         .requestMatchers("/fileController").permitAll()
+                        .requestMatchers("/fileController/{image}").permitAll()
                         .anyRequest().authenticated()
         ).addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();

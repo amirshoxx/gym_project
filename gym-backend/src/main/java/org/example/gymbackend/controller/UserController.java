@@ -14,19 +14,18 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user")
-@CrossOrigin
 public class UserController {
     private final UserService userService;
     private final AuthService authService;
     @GetMapping
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public HttpEntity<?> getAllUsers(){
         HttpEntity<?> allUsers = userService.getAllUsers();
         return ResponseEntity.ok(allUsers);
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public HttpEntity<?> savePost(@RequestBody RegisterDto registerDto){
         HttpEntity<?> register = userService.save(registerDto);
         return ResponseEntity.ok(register);
