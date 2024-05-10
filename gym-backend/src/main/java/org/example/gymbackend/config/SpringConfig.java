@@ -37,10 +37,10 @@ public class SpringConfig {
         httpSecurity.cors(AbstractHttpConfigurer::disable).csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
                 auth -> auth
                         .requestMatchers("/register").permitAll()
-                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/user/login").permitAll()
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/refresh").permitAll()
-                        .requestMatchers("/user").permitAll()
+                        .requestMatchers("/user","/user/admins","/user/super_admins").permitAll()
                         .requestMatchers("/fileController").permitAll()
                         .anyRequest().authenticated()
         ).addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);
@@ -51,13 +51,14 @@ public class SpringConfig {
     @Bean
     public UserDetailsService userDetailsService(){
         return username -> {
-            User user = userRepo.findByFullName(username)
+            User user = userRepo.findByPhoneNumber(username)
                     .orElseThrow(() -> new UsernameNotFoundException("User Not found "));
             return new org.springframework.security.core.userdetails.User(
                     user.getUsername(),
                     user.getPassword(),
                     new ArrayList<>()
             );
+
         };
     }
 

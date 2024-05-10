@@ -19,7 +19,8 @@ import java.util.UUID;
 @Builder
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "uuid default gen_random_uuid()")
     private UUID id;
     private Long chatId;
     private String fullName;
@@ -27,7 +28,7 @@ public class User implements UserDetails {
     private String password;
     private String image;
     private Status status;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
     public User(Long chatId) {
@@ -55,9 +56,13 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return fullName;
-    }
+        return phoneNumber;
 
+    }
+    @Override
+    public String getPassword() {
+        return password;
+    }
     @Override
     public boolean isAccountNonExpired() {
         return true;

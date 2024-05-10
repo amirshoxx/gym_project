@@ -2,6 +2,7 @@ package org.example.gymbackend.service.user;
 
 
 import lombok.RequiredArgsConstructor;
+import org.example.gymbackend.dto.LoginDto;
 import org.example.gymbackend.dto.RegisterDto;
 import org.example.gymbackend.entity.Role;
 import org.example.gymbackend.entity.User;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -52,4 +54,8 @@ public class UserServiceImpl implements UserService {
         User saved = userRepo.save(user);
         return ResponseEntity.ok(saved);
     }
+
+
+
+
 }

@@ -1,5 +1,7 @@
 package org.example.gymbackend.service.jwt;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -13,42 +15,36 @@ import java.util.Map;
 @Service
 public class JwtServiceImpl implements JwtService {
     @Override
-    public String getUserToken(User users) {
-        Map<String, String> map = Map.of("username", users.getUsername());
+    public String generateJwt(String id) {
 
-        String compact = Jwts.builder()
-                .claims(map)
+        return Jwts.builder()
+                .expiration(new Date(System.currentTimeMillis() + 15000))
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + 10000*10*10))
-                .subject(users.getId().toString())
-                .signWith(secretKey())
+                .subject(id)
+                .signWith(signInWithKey())
                 .compact();
-
-        return compact;
     }
-
-    @Override
-    public String parseToken(String token) {
-        String subject = Jwts.parser()
-                .verifyWith(secretKey()).build().parseSignedClaims(token).getPayload().getSubject();
-        return subject;
-    }
-
 
 
     @Override
-    public String getUserRefreshToken(User users) {
-        String compact = Jwts.builder()
+    public String generateJwtRefresh(String id) {
+        return Jwts.builder()
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60*10))
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + 1000*60*10))
-                .subject(users.getId().toString())
-                .signWith(secretKey())
+                .subject(id)
+                .signWith(signInWithKey())
                 .compact();
-        return compact;
     }
 
-    private SecretKey secretKey(){
-        byte[] decode = Decoders.BASE64.decode("GbQtiaFmi3+DBvp3DL+gXM75wVa9xRASQGAKrkW00sE=");
-        return Keys.hmacShaKeyFor(decode);
+    @Override
+    public SecretKey signInWithKey() {
+        final String SECRET_KEY = "C5ye2KN1jqFm7vVI6aaX4CxMZSOSTisiX6KxgPfUdIE";
+        byte[] decodedSecretKey = Decoders.BASE64.decode(SECRET_KEY);
+        return Keys.hmacShaKeyFor(decodedSecretKey);
+    }
+
+    @Override
+    public Jws<Claims> extractJwt(String jwt) {
+        return Jwts.parser().verifyWith(signInWithKey()).build().parseSignedClaims(jwt);
     }
 }
