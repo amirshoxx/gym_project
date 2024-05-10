@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
         user.setId(UUID.randomUUID());
         user.setFullName(dto.getFullName());
         user.setPhoneNumber(dto.getPhone());
+        user.setImage(dto.getImage());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         user.setRoles(List.of(roleUser.get()));
         User saved = userRepo.save(user);

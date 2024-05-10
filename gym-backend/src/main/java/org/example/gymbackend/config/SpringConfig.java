@@ -39,9 +39,11 @@ public class SpringConfig {
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/user/login").permitAll()
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/gym").permitAll()
                         .requestMatchers("/refresh").permitAll()
                         .requestMatchers("/user","/user/admins","/user/super_admins","/user/admin").permitAll()
                         .requestMatchers("/fileController").permitAll()
+                        .requestMatchers("/fileController/{image}").permitAll()
                         .anyRequest().authenticated()
         ).addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();

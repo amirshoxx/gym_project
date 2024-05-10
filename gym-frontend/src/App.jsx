@@ -8,6 +8,7 @@ import Gym from "./Gym.jsx";
 import SuperAdmin from "./SuperAdmin.jsx";
 import SuperSettings from "./SuperSettings.jsx";
 import AddAdmin from "./AddAdmin.jsx";
+import User from "./users/User.jsx";
 import ErrorPage from "./404/ErrorPage.jsx";
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Route path={"/gym"} element={<Gym/>} />
           <Route path={"/superAdmin"} element={<SuperAdmin/>} />
           <Route path={"/superSettings"} element={<SuperSettings/>} />
+          <Route path={"/addAdmin"} element={<AddAdmin/>} />
+          <Route path={"/users"} element={<User/>} />
             <Route path={"/addAdmin"} element={<AddAdmin/>} />
             <Route path={"/404"} element={<ErrorPage/>} />
 
