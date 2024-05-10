@@ -34,7 +34,6 @@ function Login() {
                                   .then(() => {
                                       setUser({ phoneNumber: '', password: '' });
                                       navigate("/superAdmin");
-
                                   })
                                   .catch(() => {
                                       setUser({ phoneNumber: '', password: '' });
@@ -44,7 +43,7 @@ function Login() {
 
                         })
                         .catch(() => {
-                            console.log("user bu")
+                            toast.error("User login qilolmaydi");
                         });
                 } else {
                     toast.error("Kirish muvaffaqiyatsiz. Iltimos, tekshiring va qayta urinib ko'ring.");
