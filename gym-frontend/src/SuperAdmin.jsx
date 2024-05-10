@@ -4,26 +4,30 @@ import apiCall from "./apicall/apiCall.js";
 
 function SuperAdmin() {
 
-        const naviget = useNavigate();
-
-    useEffect(()=>{
-
-
-        if (localStorage.getItem("access_token")!=null){
-            apiCall(`/user/super_admin`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
-                .then(() => {
-                })
-                .catch(() => {
-                    naviget("/admin_page");
-                });
-
-        }else {
-            naviget("/404")
-        }
-
-    },[])
 
     let navigate = useNavigate();
+
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                if (localStorage.getItem("access_token")) {
+                    await apiCall(`/user/admins`, "GET", {}, { Authorization: localStorage.getItem("access_token") });
+                    console.log("salom");
+                } else {
+                    navigate("/login");
+                }
+            } catch (error) {
+                navigate("/404");
+            }
+        };
+
+        fetchData();
+
+    }, [navigate]);
+
+
 
 
     function navigateSettings() {

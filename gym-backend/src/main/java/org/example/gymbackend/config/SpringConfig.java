@@ -40,7 +40,7 @@ public class SpringConfig {
                         .requestMatchers("/user/login").permitAll()
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/refresh").permitAll()
-                        .requestMatchers("/user","/user/admins","/user/super_admins").permitAll()
+                        .requestMatchers("/user","/user/admins","/user/super_admins","/user/admin").permitAll()
                         .requestMatchers("/fileController").permitAll()
                         .requestMatchers("/fileController/{image}").permitAll()
                         .anyRequest().authenticated()

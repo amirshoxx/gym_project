@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import apiCall from "./apicall/apiCall.js";
 import {useNavigate} from "react-router-dom";
+import login from "./auth/Login.jsx";
 
 function AddAdmin() {
     const [fullName, setFullName] = useState("")
@@ -13,28 +14,30 @@ function AddAdmin() {
 
     const navigets = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                if (localStorage.getItem("access_token")) {
+                    await apiCall(`/user/admin`, "GET", {}, { Authorization: localStorage.getItem("access_token") });
+                    console.log("salom");
+                } else {
+                    navigets("/login");
+                }
+            } catch (error) {
+                navigets("/404");
+            }
+        };
 
+        fetchData();
 
-        if (localStorage.getItem("access_token")!=null){
-            apiCall(`/user/super_admin`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
-                .then(() => {
-                })
-                .catch(() => {
-                    navigets("/admin_page");
-                });
+    }, [navigets]);
 
-        }else {
-            navigets("/404")
-        }
-
-    },[])
     return (
         <div>
             <div>
                 <input type={"text"} value={fullName} onChange={(e)=>setFullName(e.target.value)} placeholder={"Ism..."}/>
                 <input type={"text"} value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)} placeholder={"Telefon raqam..."}/>
-                <input type={"text"} value={password} onChange={(e)=>setPassword(e.target.value)} placeholder={"Parol..."}/>
+    w            <input type={"text"} value={password} onChange={(e)=>setPassword(e.target.value)} placeholder={"Parol..."}/>
                 <button onClick={()=>addAdmin()}>{"Qo'shish"}</button>
             </div>
         </div>
