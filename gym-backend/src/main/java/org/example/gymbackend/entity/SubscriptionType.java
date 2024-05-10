@@ -24,4 +24,11 @@ public class SubscriptionType {
     private Double price;
     private String title;
     private Integer dayCount;
+
+    public SubscriptionType(String name, Double price, String title, Integer dayCount) {
+        this.name = name;
+        this.price = price;
+        this.title = title;
+        this.dayCount = dayCount;
+    }
 }
