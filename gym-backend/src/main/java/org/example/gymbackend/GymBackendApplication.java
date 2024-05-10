@@ -22,12 +22,12 @@ public class GymBackendApplication {
 
     public static void main(String[] args) throws TelegramApiException {
         ApplicationContext context = SpringApplication.run(GymBackendApplication.class, args);
-        UserRepo userRepo = context.getBean(UserRepo.class);
-        RoleRepo roleRepo = context.getBean(RoleRepo.class);
-        PasswordEncoder passwordEncoder = context.getBean(PasswordEncoder.class);
-        TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-        GYMTelegramBot gymTelegramBot = new GYMTelegramBot(userRepo,roleRepo,passwordEncoder);
-        telegramBotsApi.registerBot(gymTelegramBot);
+//        UserRepo userRepo = context.getBean(UserRepo.class);
+//        RoleRepo roleRepo = context.getBean(RoleRepo.class);
+//        PasswordEncoder passwordEncoder = context.getBean(PasswordEncoder.class);
+//        TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
+//        GYMTelegramBot gymTelegramBot = new GYMTelegramBot(userRepo,roleRepo,passwordEncoder);
+//        telegramBotsApi.registerBot(gymTelegramBot);
 
     }
 

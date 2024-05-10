@@ -15,7 +15,7 @@ import java.util.UUID;
 public class FileController {
     @GetMapping
     public void getFile(@RequestParam String image, HttpServletResponse response) throws IOException {
-        FileInputStream inputStream = new FileInputStream("src/main/resources/" + image);
+        FileInputStream inputStream = new FileInputStream("gym-backend/src/main/resources/" + image);
 
         ServletOutputStream outputStream = response.getOutputStream();
 
@@ -28,7 +28,7 @@ public class FileController {
     @PostMapping
     public String saveFile(@RequestParam MultipartFile file) throws IOException {
         String image = UUID.randomUUID() + file.getOriginalFilename();
-        FileOutputStream outputStream = new FileOutputStream("src/main/resources/" + image);
+        FileOutputStream outputStream = new FileOutputStream("gym-backend/src/main/resources/" + image);
         outputStream.write(file.getBytes());
         outputStream.close();
         return image;
