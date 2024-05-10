@@ -17,7 +17,6 @@ function Login() {
         }
 
         axios({
-
             url: 'http://localhost:8080/user/login',
             method: 'post',
             data: user
