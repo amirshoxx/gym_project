@@ -17,18 +17,15 @@ import java.util.UUID;
 @Builder
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "uuid default gen_random_uuid()")
     private UUID id;
     private Long chatId;
     private String fullName;
     private String phoneNumber;
     private String password;
     private String image;
-
-    @Enumerated(EnumType.STRING)
-    private Status status=Status.START;
-
-
+    private Status status;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
@@ -41,6 +38,14 @@ public class User implements UserDetails {
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.image = image;
+    }
+
+    public User(String fullName, String phoneNumber, String password, String image, List<Role> roles) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.image = image;
+        this.roles = roles;
     }
 
     public User(String fullName, String phoneNumber, String password, List<Role> roles) {
@@ -57,9 +62,13 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return fullName;
-    }
+        return phoneNumber;
 
+    }
+    @Override
+    public String getPassword() {
+        return password;
+    }
     @Override
     public boolean isAccountNonExpired() {
         return true;

@@ -20,6 +20,7 @@ public class Gym {
     private UUID id;
     private String name;
     private String location;
-    @OneToMany
+    @OneToMany( fetch = FetchType.EAGER)
     private List<User> admins;
+
 }

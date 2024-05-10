@@ -22,22 +22,14 @@ public class GymController {
     @GetMapping
     public ResponseEntity<?> getGym() {
         List<Gym> all = gymRepo.findAll();
+        System.out.println(all);
         return ResponseEntity.ok(all);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getGymId(@PathVariable UUID id) {
-        List<Gym> allById = gymRepo.findAllById(Collections.singleton(id));
-        return ResponseEntity.ok(allById);
-    }
-
-
-
-
 
 
     @PostMapping
     public ResponseEntity<?> postGym(@RequestBody GymDto gymDto) {
+        System.out.println(gymDto);
         Gym gym = new Gym(
                 UUID.randomUUID(),
                 gymDto.getName(),
@@ -47,5 +39,11 @@ public class GymController {
         );
         Gym save = gymRepo.save(gym);
         return ResponseEntity.ok(save);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteGym(@RequestParam UUID id) {
+        gymRepo.deleteById(id);
+        return ResponseEntity.ok("delete");
     }
 }
