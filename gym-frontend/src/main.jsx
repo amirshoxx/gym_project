@@ -7,6 +7,7 @@ import store from "./redux/store.jsx";
 import { Provider } from 'react-redux';
 import './Login.scss';
 import './scss/Home.scss'
+import './404Page.scss'
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <BrowserRouter>
