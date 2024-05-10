@@ -11,18 +11,16 @@ function SuperAdmin() {
 
     useEffect(() => {
         const fetchData = async () => {
+            try {
                 if (localStorage.getItem("access_token")) {
-                    await apiCall(`/user/admins`, "GET", {}, { Authorization: localStorage.getItem("access_token") }).then((res)=>{
-                        if (res.data){
-                            alert("salom admin")
-                        }else {
-                            navigate("/login")
-                        }
-                    });
-
+                    await apiCall(`/user/admins`, "GET", {}, { Authorization: localStorage.getItem("access_token") });
+                    console.log("salom");
                 } else {
-                    navigate("/404");
+                    navigate("/login");
                 }
+            } catch (error) {
+                navigate("/404");
+            }
         };
 
         fetchData();
@@ -43,9 +41,9 @@ function SuperAdmin() {
 
     return (
         <div className={"container d-flex justify-content-center"}>
-                <button onClick={()=>navigateGym()} className={"btn btn-secondary m-1 rounded-0"}>GYMS</button>
+            <button onClick={()=>navigateGym()} className={"btn btn-secondary m-1 rounded-0"}>GYMS</button>
 
-                <button onClick={()=>navigateSettings()} className={"btn btn-secondary m-1 rounded-0"}>Sozlamalar</button>
+            <button onClick={()=>navigateSettings()} className={"btn btn-secondary m-1 rounded-0"}>Sozlamalar</button>
         </div>
     );
 }

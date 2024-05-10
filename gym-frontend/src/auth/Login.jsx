@@ -25,32 +25,25 @@ function Login() {
             .then((res) => {
                 if (res.data) {
 
-                    apiCall(`/user/admins`, "GET",{}, { Authorization:res.data.access_token })
-                        .then((resNotUser) => {
-                          if (resNotUser){
-                              localStorage.setItem('access_token', res.data.access_token);
-                              localStorage.setItem('refresh_token', res.data.refresh_token);
-                              apiCall(`/user/admins`, "GET",{}, { Authorization:res.data.access_token })
-                                  .then(() => {
-                                      setUser({ phoneNumber: '', password: '' });
-                                      console.log(res.data)
-                                      if ( res.data.roles === "ROLE_SUPER_ADMIN") {
-                                          navigate("/superAdmin")
-                                      } else if(res.data.roles==="ROLE_ADMIN") {
-                                          navigate("/addAdmin");
-                                      }else if (res.data.roles==="ROLE_USER"){
-                                          toast.error("User login qilolmaydi");
-                                      }
-                                  })
-                                  .catch(() => {
-                                      setUser({ phoneNumber: '', password: '' });
-                                      navigate("/addAdmin");
-                                  });
-                          }
+                    apiCall(`/user/super_admins`, "GET",{}, { Authorization:res.data.access_token })
+                .then((resNotUser) => {
+                        if (resNotUser){
+                            localStorage.setItem('access_token', res.data.access_token);
+                            localStorage.setItem('refresh_token', res.data.refresh_token);
+                            apiCall(`/user/admins`, "GET",{}, { Authorization:res.data.access_token })
+                        .then(() => {
+                                setUser({ phoneNumber: '', password: '' });
+                                navigate("/superAdmin");
+                            })
+                                .catch(() => {
+                                    setUser({ phoneNumber: '', password: '' });
+                                    navigate("/addAdmin");
+                                });
+                        }
 
-                        })
+                    })
                         .catch(() => {
-                            toast.error("User login qilolmaydi");
+                            toast.error("Kirish muvaffaqiyatsiz. Iltimos, tekshiring va qayta urinib ko'ring.");
                         });
                 } else {
                     toast.error("Kirish muvaffaqiyatsiz. Iltimos, tekshiring va qayta urinib ko'ring.");
@@ -60,31 +53,31 @@ function Login() {
 
     return (
 
-            <div className={"big_mean"} >
-                <div className="card">
-                    <ToastContainer/>
-                    <h1 style={{textAlign: "center", fontSize: "40px", marginBottom: "10px"}}>Login</h1>
-                    <div className="input-field">
-                        <input
-                            onChange={(e) => setUser({...user, phoneNumber: e.target.value})}
-                            value={user.phoneNumber}
-                            placeholder="PhoneNumber..."
-                            type="text"
-                        />
-                    </div>
-                    <div className="input-field">
-                        <input
-                            onChange={(e) => setUser({...user, password: e.target.value})}
-                            value={user.password}
-                            placeholder="Password..."
-                            type="password"
-                        />
-                    </div>
-                    <button onClick={loginUser} className="buttonS">
-                        Login
-                    </button>
+        <div className={"big_mean"} >
+            <div className="card">
+                <ToastContainer/>
+                <h1 style={{textAlign: "center", fontSize: "40px", marginBottom: "10px"}}>Login</h1>
+                <div className="input-field">
+                    <input
+                        onChange={(e) => setUser({...user, phoneNumber: e.target.value})}
+                        value={user.phoneNumber}
+                        placeholder="PhoneNumber..."
+                        type="text"
+                    />
                 </div>
+                <div className="input-field">
+                    <input
+                        onChange={(e) => setUser({...user, password: e.target.value})}
+                        value={user.password}
+                        placeholder="Password..."
+                        type="password"
+                    />
+                </div>
+                <button onClick={loginUser} className="buttonS">
+                    Login
+                </button>
             </div>
+        </div>
     );
 }
 
