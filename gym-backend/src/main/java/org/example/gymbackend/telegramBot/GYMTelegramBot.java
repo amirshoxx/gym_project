@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.example.gymbackend.entity.Status;
 import org.example.gymbackend.entity.User;
+import org.example.gymbackend.repository.RoleRepo;
 import org.example.gymbackend.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -22,12 +24,14 @@ import java.util.Optional;
 @Component
 public class GYMTelegramBot extends TelegramLongPollingBot {
     private final UserRepo userRepo;
-
+    private final RoleRepo roleRepo;
+    private final PasswordEncoder passwordEncoder;
     @Autowired
-    public GYMTelegramBot(UserRepo userRepo) {
+    public GYMTelegramBot(UserRepo userRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
+        this.roleRepo=roleRepo;
+        this.passwordEncoder=passwordEncoder;
     }
-
     @Override
     public String getBotUsername() {
         return "khamroyevHB_bot";

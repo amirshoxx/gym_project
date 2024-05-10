@@ -1,6 +1,28 @@
 import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import apiCall from "./apicall/apiCall.js";
 
 function SuperAdmin() {
+
+    const navigets = useNavigate();
+
+    useEffect(()=>{
+
+
+        if (localStorage.getItem("access_token")!=null){
+            apiCall(`/user/admins`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
+        .then(() => {
+            console.log("salom")
+        })
+                .catch(() => {
+                    navigets("/login");
+                });
+
+        }else {
+            navigets("/404")
+        }
+
+    },[])
 
     let navigate = useNavigate();
 

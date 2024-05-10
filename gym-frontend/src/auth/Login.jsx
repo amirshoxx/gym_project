@@ -33,12 +33,12 @@ function Login() {
                               apiCall(`/user/admins`, "GET",{}, { Authorization:res.data.access_token })
                                   .then(() => {
                                       setUser({ phoneNumber: '', password: '' });
-                                      navigate("/super_admin_page");
+                                      navigate("/superAdmin");
 
                                   })
                                   .catch(() => {
                                       setUser({ phoneNumber: '', password: '' });
-                                      navigate("/admin_page");
+                                      navigate("/addAdmin");
                                   });
                           }
 
