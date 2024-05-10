@@ -43,7 +43,7 @@ function Login() {
 
                         })
                         .catch(() => {
-                            toast.error("User login qilolmaydi");
+                            toast.error("Kirish muvaffaqiyatsiz. Iltimos, tekshiring va qayta urinib ko'ring.");
                         });
                 } else {
                     toast.error("Kirish muvaffaqiyatsiz. Iltimos, tekshiring va qayta urinib ko'ring.");

@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import apiCall from "./apicall/apiCall.js";
 import {useNavigate} from "react-router-dom";
-import login from "./auth/Login.jsx";
 
 function AddAdmin() {
     const [fullName, setFullName] = useState("")
