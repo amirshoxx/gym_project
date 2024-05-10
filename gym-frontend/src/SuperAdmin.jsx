@@ -11,16 +11,18 @@ function SuperAdmin() {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
                 if (localStorage.getItem("access_token")) {
-                    await apiCall(`/user/admins`, "GET", {}, { Authorization: localStorage.getItem("access_token") });
-                    console.log("salom");
+                    await apiCall(`/user/admins`, "GET", {}, { Authorization: localStorage.getItem("access_token") }).then((res)=>{
+                        if (res.data){
+                            alert("salom admin")
+                        }else {
+                            navigate("/login")
+                        }
+                    });
+
                 } else {
-                    navigate("/login");
+                    navigate("/404");
                 }
-            } catch (error) {
-                navigate("/404");
-            }
         };
 
         fetchData();

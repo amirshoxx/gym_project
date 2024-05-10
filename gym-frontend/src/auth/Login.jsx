@@ -25,7 +25,7 @@ function Login() {
             .then((res) => {
                 if (res.data) {
 
-                    apiCall(`/user/super_admins`, "GET",{}, { Authorization:res.data.access_token })
+                    apiCall(`/user/admins`, "GET",{}, { Authorization:res.data.access_token })
                         .then((resNotUser) => {
                           if (resNotUser){
                               localStorage.setItem('access_token', res.data.access_token);
@@ -33,7 +33,14 @@ function Login() {
                               apiCall(`/user/admins`, "GET",{}, { Authorization:res.data.access_token })
                                   .then(() => {
                                       setUser({ phoneNumber: '', password: '' });
-                                      navigate("/superAdmin");
+                                      console.log(res.data)
+                                      if ( res.data.roles === "ROLE_SUPER_ADMIN") {
+                                          navigate("/superAdmin")
+                                      } else if(res.data.roles==="ROLE_ADMIN") {
+                                          navigate("/addAdmin");
+                                      }else if (res.data.roles==="ROLE_USER"){
+                                          toast.error("User login qilolmaydi");
+                                      }
                                   })
                                   .catch(() => {
                                       setUser({ phoneNumber: '', password: '' });

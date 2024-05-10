@@ -16,9 +16,14 @@ function User() {
     const [phone, setPhone] = useState('')
     const [selectedFile, setSelectedFile] = useState("");
     function getUsers(){
-        apiCall("/user","GET").then(res=>{
+        apiCall("/user","GET",{},{Authorization:localStorage.getItem("access_token")}).then(res=>{
             setUsers(res.data.body)
 
+        }).catch(()=>{
+            apiCall("/user/refresh", "POST", {}, { refreshToken : localStorage.getItem("refresh_token") })
+                .then(res => {
+                    localStorage.setItem("access_token", res.data);
+                })
         })
     }
 
@@ -33,12 +38,17 @@ function User() {
                         password,
                         image:res.data,
                         fullName
-                    })
+                    },{Authorization:localStorage.getItem("access_token")})
                         .then(() =>
                             getUsers(),
                             toast.success('User added')
                         )
-                        .catch(error => toast.error('Error during registration:', error));
+                        .catch(()=>
+                    apiCall("/user/refresh", "POST", {}, { refreshToken : localStorage.getItem("refresh_token") })
+                        .then(res => {
+                            localStorage.setItem("access_token", res.data);
+                            getUsers()
+                        }))
                 })
         }
     }
