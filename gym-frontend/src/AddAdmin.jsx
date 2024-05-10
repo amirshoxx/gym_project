@@ -35,7 +35,7 @@ function AddAdmin() {
             <div>
                 <input type={"text"} value={fullName} onChange={(e)=>setFullName(e.target.value)} placeholder={"Ism..."}/>
                 <input type={"text"} value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)} placeholder={"Telefon raqam..."}/>
-                <input type={"text"} value={password} onChange={(e)=>setPassword(e.target.value)} placeholder={"Parol..."}/>
+    w            <input type={"text"} value={password} onChange={(e)=>setPassword(e.target.value)} placeholder={"Parol..."}/>
                 <button onClick={()=>addAdmin()}>{"Qo'shish"}</button>
             </div>
         </div>
