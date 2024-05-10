@@ -8,7 +8,7 @@ import org.example.gymbackend.entity.User;
 import org.example.gymbackend.repository.GymRepo;
 import org.example.gymbackend.repository.RoleRepo;
 import org.example.gymbackend.repository.UserRepo;
-import org.example.gymbackend.service.UserService;
+import org.example.gymbackend.service.AdminService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class AdminServiceImpl implements AdminService {
     private final GymRepo gymRepo;
     private final UserRepo userRepo;
     private final RoleRepo  roleRepo;

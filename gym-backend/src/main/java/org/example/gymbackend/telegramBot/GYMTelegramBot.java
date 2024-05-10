@@ -12,14 +12,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.AnswerInlineQuery;
 import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.*;
+import org.telegram.telegrambots.meta.api.objects.inlinequery.InlineQuery;
+import org.telegram.telegrambots.meta.api.objects.inlinequery.inputmessagecontent.InputMessageContent;
+import org.telegram.telegrambots.meta.api.objects.inlinequery.result.InlineQueryResultArticle;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiValidationException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -29,6 +34,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.IntFunction;
+
 @Component
 public class GYMTelegramBot extends TelegramLongPollingBot {
     private final UserRepo userRepo;
@@ -36,6 +43,7 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
     private final PasswordEncoder passwordEncoder;
     private final SubscriptionTypeRepo subscriptionTypeRepo;
 
+    public String phone=null;
     @Autowired
     public GYMTelegramBot(UserRepo userRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder, SubscriptionTypeRepo subscriptionTypeRepo) {
         this.userRepo = userRepo;
@@ -43,16 +51,16 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
         this.passwordEncoder=passwordEncoder;
         this.subscriptionTypeRepo=subscriptionTypeRepo;
     }
-
+    
 
     @Override
     public String getBotUsername() {
-        return "gym_bek_bot";
+        return "gym_shoxi_legenda_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "6833970681:AAHfG31E4e-KjOujk4lcoHowAVVbYV96Ggg";
+        return "7197645162:AAG9OOT1UNmyCZAnCU-w7tyjOklYLP3l0io";
     }
     String[] subscriptionInfo = new String[4];
 
@@ -61,25 +69,25 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
 
         if (update.hasMessage()) {
-            Message message = update.getMessage();
+
+            Message  message = update.getMessage();
             Long chatId = message.getChatId();
+
             SendMessage sendMessage = new SendMessage();
-            User user = selectUser(chatId);
-            if (message.hasText() ) {
+            User user = selectUser(chatId,phone);
+            if (message.hasText()) {
                 String text2 = message.getText();
 
-                if (message.getText().equalsIgnoreCase("/start") ) {
-
-                    user.setStatus(Status.SHARE_CONTACT);
+                if (message.getText().equalsIgnoreCase("/start")) {
+//                    user.setStatus(Status.SHARE_CONTACT);
                     sendMessage.setText("Iltimos contactingizni yuboring!");
                     sendMessage.setReplyMarkup(genContactButtons());
-                    sendMessage.setChatId(user.getChatId());
+                    sendMessage.setChatId(chatId);
                     execute(sendMessage);
-                    userRepo.save(user);
                 } else if (user.getStatus().equals(Status.SET_PASSWORD)) {
                     String text = message.getText();
                     User foundUser = userRepo.findByFullName(user.getFullName()).get();
-                    if (passwordEncoder.matches(text,foundUser.getPassword())){
+                    if (passwordEncoder.matches(text, foundUser.getPassword())) {
                         foundUser.setStatus(Status.SET_SETTING);
                         sendMessage.setReplyMarkup(genInlineSettingsButtons());
                         sendMessage.setText("iltimos sozlamalar buttonini bosing!");
@@ -91,8 +99,7 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                         sendMessage.setChatId(chatId);
                         execute(sendMessage);
                     }
-                }
-                else if (user.getStatus().equals(Status.SET_NAME)) {
+                } else if (user.getStatus().equals(Status.SET_NAME)) {
                     user.setStatus(Status.SET_IMAGE);
                     user.setFullName(message.getText());
                     sendMessage.setText("Iltimos rasmingizni yuboring yuboring!");
@@ -143,44 +150,42 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                     saveSubscriptionType(subscriptionType);
                 }
 
-            } else if (message.hasContact()) {;
-                if (user.getStatus().equals(Status.SHARE_CONTACT)){
+            } else if (message.hasContact()) {
+
+                if (!message.getContact().getPhoneNumber().isEmpty()) {
 
                     Contact contact = message.getContact();
+                    phone=contact.getPhoneNumber();
                     Optional<User> findUserOptional = userRepo.findByPhoneNumber(contact.getPhoneNumber());
+                     user = userRepo.findByPhoneNumber(contact.getPhoneNumber()).get();
                     if (findUserOptional.isPresent()) {
-                        User findUser = findUserOptional.get();
-                        List<Role> roles = findUser.getRoles();
-                        Role admin = roleRepo.findByName("ROLE_ADMIN");
+
+                        List<Role> roles = user.getRoles();
+                        Role admin = roleRepo.findByName("ROLE_ADMIN").get();
+                        Role userRole = roleRepo.findByName("ROLE_USER").get();
 
                         for (Role role : roles) {
-                            if (role.equals(admin)){
-                                findUser.setStatus(Status.SET_PASSWORD);
+                            if (role.getName().equals(admin.getName())) {
+                                user.setStatus(Status.SET_PASSWORD);
                                 sendMessage.setText("Iltimos parolingizni kiriting yuboring!");
-                                sendMessage.setChatId(findUser.getChatId());
+                                sendMessage.setChatId(user.getChatId());
 
                                 execute(sendMessage);
-                                userRepo.save(findUser);
+                                userRepo.save(user);
+                            } else if(role.getName().equals(userRole.getName())){
+                                user.setStatus(Status.SET_NAME);
+                                sendMessage.setText("Assalom aleykum "+ user.getFullName() +" botimizga xush kelibsiz iltimos rasmingizni yuboring!");
+                                sendMessage.setChatId(chatId);
+                                execute(sendMessage);
+                                userRepo.save(user);
                             }
+
                         }
 
-
-
-
                     }
-                    else {
-                        user.setStatus(Status.SET_NAME);
-                        user.setPhoneNumber(contact.getPhoneNumber());
-                        sendMessage.setText("Assalom aleykum botimizga xush kelibsiz iltimos  ism sharifingizni kiriting!");
-                        sendMessage.setChatId(user.getChatId());
-                        execute(sendMessage);
-                        userRepo.save(user);
-                    }
-
                 }
 
-            }
-            else if (message.hasPhoto()) {
+            } else if (message.hasPhoto()) {
 
                 if (user.getStatus().equals(Status.SET_IMAGE)) {
                     List<PhotoSize> photos = message.getPhoto();
@@ -215,17 +220,17 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                             e.printStackTrace();
                         }
                     }
-                    } else {
-                        System.out.println("Failed to retrieve file information.");
-                    }
+                } else {
+                    System.out.println("Failed to retrieve file information.");
                 }
+            }
 
-            }else if (update.hasCallbackQuery()) {
+        } else if (update.hasCallbackQuery()) {
 
             CallbackQuery callbackQuery = update.getCallbackQuery();
             String data = callbackQuery.getData();
             Long chatId = callbackQuery.getFrom().getId();
-            User user = selectUser(chatId);
+            User user=new User(chatId);
             SendMessage sendMessage = new SendMessage();
 
             if (user.getStatus().equals(Status.SET_SETTING)) {
@@ -246,9 +251,50 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                     execute(sendMessage);
                     userRepo.save(user);
 
+                }else if(data.equals("foydalanuvchilar")){
+                    user.setStatus(Status.SET_SEARCH);
+                    sendMessage.setText("Search");
+                    sendMessage.setReplyMarkup(genInlineUserButtons());
+                    sendMessage.setChatId(user.getChatId());
+                    execute(sendMessage);
+                    userRepo.save(user);
                 }
 
             }
+
+        } else if (update.hasInlineQuery()) {
+            InlineQuery inlineQuery = update.getInlineQuery();
+
+            Long chatId = inlineQuery.getFrom().getId();
+            User user = selectUser(chatId,phone);
+
+//            if (user.getStatus().equals(Status.SET_SEARCH)){
+//                user.setStatus(Status.SET_SEARCH);
+//                String query = inlineQuery.getQuery();
+//                var inlineQueryResultArticle = new InlineQueryResultArticle();
+//                InlineQueryResultArticle[] inlineQueryResultArticles = userRepo.findAll().stream().filter(u -> u.getPhoneNumber().toLowerCase().contains(query.toLowerCase()))
+//                        .map(u -> new InlineQueryResultArticle(
+//                                String.valueOf(u.getId()),
+//                                u.getFullName(),
+//                               "bjnwkelfdsnkmkwefm;l"
+//                        )).toArray(InlineQueryResultArticle[]::new);
+//                AnswerInlineQuery answerInlineQuery = new AnswerInlineQuery(
+//                        inlineQuery.getId(),
+//                        Arrays.asList(inlineQueryResultArticles)
+//                );
+//                List<User> all = userRepo.findAll();
+//                all.stream().filter(user->user.getPhoneNumber().toLowerCase().contains(query.toLowerCase()))
+//                                .map(user->{
+//
+//                                    return new InlineQueryResultArticle(
+//                                            user.getId(),
+//                                            user.getFullName(),
+//
+//                                    );
+//                                });
+//                execute(answerInlineQuery);
+//                userRepo.save(user);
+//            }
 
         }
 
@@ -271,10 +317,17 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
 //        }
 //    }
 
-    private User selectUser(Long chatId) {
-        Optional<User> userOptional = userRepo.findAllByChatId(chatId);
-        return userOptional.orElseGet(() -> userRepo.save(new User(chatId)));
+    private User selectUser(Long chatId, String phone) {
+        Optional<User> optionalUser = userRepo.findAllByChatId(chatId);
+        Optional<User> byPhoneNumber = userRepo.findByPhoneNumber(phone);
+
+        return optionalUser.orElseGet(() -> byPhoneNumber.orElse(null));
+
+
     }
+
+
+
 
     private ReplyKeyboardMarkup genTarifAddButtons(){
         List<KeyboardRow> rows=new ArrayList<>();
@@ -337,6 +390,25 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
         return inlineKeyboardMarkup;
 
     }
+    private InlineKeyboardMarkup genInlineUserButtons(){
+
+        List<List<InlineKeyboardButton>> rows=new ArrayList<>();
+        List<InlineKeyboardButton> row=new ArrayList<>();
+        rows.add(row);
+
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText("Search \uD83D\uDD0E");
+        button.setCallbackData("search");
+
+        button.setSwitchInlineQueryCurrentChat(" ");
+        row.add(button);
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup(rows);
+        return inlineKeyboardMarkup;
+
+    }
+
+
     private InlineKeyboardMarkup genInlineRatesButtons(){
         List<List<InlineKeyboardButton>> rows=new ArrayList<>();
         List<InlineKeyboardButton> row=new ArrayList<>();
