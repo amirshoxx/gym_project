@@ -1,6 +1,9 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {getAxios} from "./getAxios.jsx";
+
+
 
 function Gym() {
 
@@ -22,13 +25,21 @@ function Gym() {
     }
 
     function getGym() {
-        axios({url: "http://localhost:8081/gym", method: "GET"}).then(({data}) => {
+        getAxios({url: "http://localhost:8080/gym", method: "GET"}).then(({data}) => {
             setGyms(data)
         })
     }
 
     function postGym() {
-        axios({url: "http://localhost:8081/gym", method: "POST", data: gym})
+        axios({url: "http://localhost:8080/gym", method: "POST", data: gym}).then(()=>{
+            getGym()
+        })
+    }
+
+    function deleteGym(id) {
+        axios({url: "http://localhost:8080/gym?id="+id, method: "DELETE"}).then(()=>{
+            getGym()
+        })
     }
 
     return (
@@ -47,8 +58,10 @@ function Gym() {
                 <table className={" table table-striped"}>
                     <thead>
                     <tr>
+                        <th>#</th>
                         <th>Zal nomi</th>
                         <th>Zal lokatsiyasi</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,7 +71,9 @@ function Gym() {
                             <td>{itm.name}</td>
                             <td>{itm.location}</td>
                             <td>
-                                <button onClick={() => navigateAdmin()} className={"btn btn-success rounded-0"}>Admin
+                                <button onClick={() => navigateAdmin()} className={"btn btn-success rounded-0 shadow"}>Admin
+                                </button>
+                                <button onClick={()=>deleteGym(itm.id)} className={"btn btn-danger rounded-0 shadow"}>Delete
                                 </button>
                             </td>
                         </tr>)

@@ -4,10 +4,12 @@ import org.example.gymbackend.dto.LoginDto;
 import org.example.gymbackend.dto.RegisterDto;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Map;
+
 public interface AuthService {
     ResponseEntity<?> registerUser(RegisterDto registerDto);
 
-    ResponseEntity<?> loginUser(LoginDto loginDto);
+    Map<String, String> loginUser(LoginDto loginDto);
 
-    ResponseEntity<?> refreshToken(String refreshToken);
+    String refreshToken(String refreshToken);
 }
