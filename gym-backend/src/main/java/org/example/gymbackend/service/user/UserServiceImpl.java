@@ -2,7 +2,6 @@ package org.example.gymbackend.service.user;
 
 
 import lombok.RequiredArgsConstructor;
-import org.example.gymbackend.dto.LoginDto;
 import org.example.gymbackend.dto.RegisterDto;
 import org.example.gymbackend.entity.Role;
 import org.example.gymbackend.entity.User;
@@ -16,13 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-
-@Service
 @RequiredArgsConstructor
-
+@Service
 public class UserServiceImpl implements UserService {
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;

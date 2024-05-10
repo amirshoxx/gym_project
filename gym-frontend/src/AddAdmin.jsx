@@ -1,5 +1,6 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import apiCall from "./apicall/apiCall.js";
+import {useNavigate} from "react-router-dom";
 
 function AddAdmin() {
     const [fullName, setFullName] = useState("")
@@ -10,6 +11,24 @@ function AddAdmin() {
         apiCall("/admin", "POST",{fullName, phoneNumber, password})
     }
 
+    const navigets = useNavigate();
+
+    useEffect(()=>{
+
+
+        if (localStorage.getItem("access_token")!=null){
+            apiCall(`/user/super_admin`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
+                .then(() => {
+                })
+                .catch(() => {
+                    navigets("/admin_page");
+                });
+
+        }else {
+            navigets("/404")
+        }
+
+    },[])
     return (
         <div>
             <div>
