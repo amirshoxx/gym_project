@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @GetMapping("/admin")
-    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public HttpEntity<?> admin() {
         return ResponseEntity.status(200).body("admin");
     }
