@@ -1,14 +1,22 @@
 import React, {useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
+import apiCall from "../apicall/apiCall.js";
 
 function Admin() {
-    const naviget = useNavigate()
-
+    const navigets = useNavigate();
     useEffect(()=>{
+
+
         if (localStorage.getItem("access_token")!=null){
-            console.log("rol")
+            apiCall(`/user/super_admin`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
+                .then(() => {
+                })
+                .catch(() => {
+                    navigets("/admin_page");
+                });
+
         }else {
-            naviget("/404")
+            navigets("/404")
         }
 
     },[])
