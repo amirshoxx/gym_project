@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6a69bf3c-9072-4965-b754-156925515a97" name="Changes" comment="add 404 photo" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="JSX File" />
+        <option value="SCSS File" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Abdugaforov&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/amirshoxx/gym_project.git&quot;,
+    &quot;accountId&quot;: &quot;77506a78-0585-43eb-a9e1-0a60ee65e80e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2gBjmRjOw8J3UjJ71rM62W599m7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AuthServiceImplTest.loginUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthServiceImplTest.loginUser_WithInvalidCredentials_ShouldReturnNull.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.GymBackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Desktop/MyResumePro&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.gymbackend.service.auth" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="AuthServiceImplTest.loginUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gym-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.gymbackend.service.auth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.gymbackend.service.auth" />
+      <option name="MAIN_CLASS_NAME" value="org.example.gymbackend.service.auth.AuthServiceImplTest" />
+      <option name="METHOD_NAME" value="loginUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthServiceImplTest.loginUser_WithInvalidCredentials_ShouldReturnNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gym-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.gymbackend.service.auth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.gymbackend.service.auth" />
+      <option name="MAIN_CLASS_NAME" value="org.example.gymbackend.service.auth.AuthServiceImplTest" />
+      <option name="METHOD_NAME" value="loginUser_WithInvalidCredentials_ShouldReturnNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GymBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="gym-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.gymbackend.GymBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/gym-frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="JUnit.AuthServiceImplTest.loginUser_WithInvalidCredentials_ShouldReturnNull" />
+        <item itemvalue="JUnit.AuthServiceImplTest.loginUser" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a69bf3c-9072-4965-b754-156925515a97" name="Changes" comment="" />
+      <created>1715178028206</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715178028206</updated>
+      <workItem from="1715178030680" duration="1290000" />
+      <workItem from="1715241086491" duration="354000" />
+      <workItem from="1715259593235" duration="3679000" />
+      <workItem from="1715310655505" duration="5275000" />
+      <workItem from="1715319964376" duration="16614000" />
+      <workItem from="1715400395837" duration="212000" />
+      <workItem from="1715403505386" duration="440000" />
+      <workItem from="1715407384972" duration="1411000" />
+      <workItem from="1715414638600" duration="485000" />
+      <workItem from="1715419829846" duration="1944000" />
+    </task>
+    <task id="LOCAL-00001" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715316588502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715316588502</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715317235120</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715317235120</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715317662274</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715317662274</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715320869029</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715320869029</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715322708311</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715322708311</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715324756712</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715324756712</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715325124371</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715325124371</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715325363672</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715325363672</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715327000171</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715327000171</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add security">
+      <option name="closed" value="true" />
+      <created>1715332007261</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715332007261</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add 404 photo">
+      <option name="closed" value="true" />
+      <created>1715333677749</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715333677749</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add 404 photo">
+      <option name="closed" value="true" />
+      <created>1715342319450</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715342319450</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add 404 photo">
+      <option name="closed" value="true" />
+      <created>1715342635889</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715342635889</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add 404 photo">
+      <option name="closed" value="true" />
+      <created>1715415082659</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715415082659</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add 404 photo">
+      <option name="closed" value="true" />
+      <created>1715426810824</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715426810824</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add security" />
+    <MESSAGE value="add 404 photo" />
+    <option name="LAST_COMMIT_MESSAGE" value="add 404 photo" />
+  </component>
+</project>

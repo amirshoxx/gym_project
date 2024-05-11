@@ -1,9 +1,11 @@
 import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "react-phone-input-2/lib/style.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import apiCall from "../apicall/apiCall.js";
+import PhoneInput from "react-phone-input-2";
 function Login() {
     const [user, setUser] = useState({ phoneNumber: '', password: '' });
     const navigate = useNavigate();
@@ -58,21 +60,23 @@ function Login() {
                     <ToastContainer/>
                     <h1 style={{textAlign: "center", fontSize: "40px", marginBottom: "10px"}}>Login</h1>
                     <div className="input-field">
-                        <input
-                            onChange={(e) => setUser({...user, phoneNumber: e.target.value})}
+                        <PhoneInput
+
+                            country={"uz"}
+
+                            onChange={(e) => setUser({...user, phoneNumber: e})}
                             value={user.phoneNumber}
-                            placeholder="PhoneNumber..."
-                            type="text"
                         />
                     </div>
                     <div className="input-field">
                         <input
                             onChange={(e) => setUser({...user, password: e.target.value})}
                             value={user.password}
-                            placeholder="Password..."
+                            placeholder="Parol..."
                             type="password"
                         />
                     </div>
+
                     <button onClick={loginUser} className="buttonS">
                         Login
                     </button>

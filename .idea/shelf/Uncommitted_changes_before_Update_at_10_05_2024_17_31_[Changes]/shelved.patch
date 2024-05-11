@@ -1,0 +1,19 @@
+Index: gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.gymbackend.controller;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.example.gymbackend.dto.LoginDto;\r\nimport org.example.gymbackend.dto.RegisterDto;\r\nimport org.example.gymbackend.service.auth.AuthService;\r\nimport org.example.gymbackend.service.user.UserService;\r\nimport org.springframework.http.HttpEntity;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.security.access.prepost.PreAuthorize;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.Map;\r\n\r\n@RestController\r\n@RequiredArgsConstructor\r\n@RequestMapping(\"/user\")\r\npublic class UserController {\r\n    private final UserService userService;\r\n    private final AuthService authService;\r\n    @GetMapping\r\n//    @PreAuthorize(\"hasAnyRole('ROLE_ADMIN')\")\r\n    public HttpEntity<?> getAllUsers(){\r\n        HttpEntity<?> allUsers = userService.getAllUsers();\r\n        return ResponseEntity.ok(allUsers);\r\n    }\r\n\r\n    @PostMapping\r\n//    @PreAuthorize(\"hasRole('ROLE_ADMIN')\")\r\n    public HttpEntity<?> savePost(@RequestBody RegisterDto registerDto){\r\n        HttpEntity<?> register = userService.save(registerDto);\r\n        return ResponseEntity.ok(register);\r\n    }\r\n\r\n    @PostMapping(\"/login\")\r\n    public HttpEntity<?> generate(@RequestBody LoginDto dto) {\r\n        Map<String, String> stringStringMap = authService.loginUser(dto);\r\n        return ResponseEntity.ok(stringStringMap);\r\n    }\r\n\r\n    //bundan maqsad admin va super_adminni ajratish\r\n    @GetMapping(\"/admins\")\r\n    @PreAuthorize(\"hasAnyRole('ROLE_SUPER_ADMIN')\")\r\n    public HttpEntity<?> admins() {\r\n        return ResponseEntity.status(200).body(\"super_admin\");\r\n    }\r\n\r\n    @GetMapping(\"/super_admins\")\r\n    @PreAuthorize(\"hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')\")\r\n    public HttpEntity<?> super_admins() {\r\n        return ResponseEntity.status(200).body(\"super_admin\");\r\n    }\r\n\r\n    @GetMapping(\"/admin\")\r\n    @PreAuthorize(\"hasAnyRole('ROLE_ADMIN')\")\r\n    public HttpEntity<?> admin() {\r\n        return ResponseEntity.status(200).body(\"admin\");\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java b/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java
+--- a/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java	(revision 7d8c669d60c30b87495f7ff7360264bad5b156ed)
++++ b/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java	(date 1715344282379)
+@@ -54,7 +54,7 @@
+     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+     public HttpEntity<?> admin() {
+         return ResponseEntity.status(200).body("admin");
+-    }
++    }  
+ 
+ 
+ }

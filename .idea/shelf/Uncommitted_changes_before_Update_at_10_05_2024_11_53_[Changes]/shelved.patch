@@ -1,0 +1,109 @@
+Index: gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.gymbackend.config;\r\n\r\nimport jakarta.servlet.Filter;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.example.gymbackend.entity.User;\r\nimport org.example.gymbackend.repository.UserRepo;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.context.annotation.Bean;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.http.HttpMethod;\r\nimport org.springframework.security.authentication.AuthenticationManager;\r\nimport org.springframework.security.config.Customizer;\r\nimport org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;\r\nimport org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;\r\nimport org.springframework.security.config.annotation.web.builders.HttpSecurity;\r\nimport org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;\r\nimport org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;\r\nimport org.springframework.security.core.userdetails.UserDetailsService;\r\nimport org.springframework.security.core.userdetails.UsernameNotFoundException;\r\nimport org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\r\nimport org.springframework.security.crypto.password.PasswordEncoder;\r\nimport org.springframework.security.web.SecurityFilterChain;\r\nimport org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;\r\n\r\nimport java.util.ArrayList;\r\n\r\n@Configuration\r\n@EnableWebSecurity\r\n@EnableMethodSecurity\r\n@RequiredArgsConstructor\r\npublic class SpringConfig {\r\n    private final MyFilter myFilter;\r\n    private final UserRepo userRepo;\r\n\r\n    @Bean\r\n    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {\r\n        httpSecurity.cors(AbstractHttpConfigurer::disable).csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(\r\n                auth -> auth\r\n                        .requestMatchers(\"/register\").permitAll()\r\n                        .requestMatchers(\"/user/login\").permitAll()\r\n                        .requestMatchers(\"/\").permitAll()\r\n                        .requestMatchers(\"/refresh\").permitAll()\r\n                        .requestMatchers(\"/user\",\"/user/admins\",\"/user/super_admins\").permitAll()\r\n                        .requestMatchers(\"/fileController\").permitAll()\r\n                        .anyRequest().authenticated()\r\n        ).addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);\r\n        return httpSecurity.build();\r\n    }\r\n\r\n\r\n    @Bean\r\n    public UserDetailsService userDetailsService(){\r\n        return username -> {\r\n            User user = userRepo.findByPhoneNumber(username)\r\n                    .orElseThrow(() -> new UsernameNotFoundException(\"User Not found \"));\r\n            return new org.springframework.security.core.userdetails.User(\r\n                    user.getUsername(),\r\n                    user.getPassword(),\r\n                    new ArrayList<>()\r\n            );\r\n\r\n        };\r\n    }\r\n\r\n    @Bean\r\n    public BCryptPasswordEncoder encoder(){return new BCryptPasswordEncoder();}\r\n\r\n    @Bean\r\n    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{\r\n        return configuration.getAuthenticationManager();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java b/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java
+--- a/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java	(revision f4b3c6188763c3043ad9adfdc58d5b6893b40b4f)
++++ b/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java	(date 1715323127239)
+@@ -40,7 +40,7 @@
+                         .requestMatchers("/user/login").permitAll()
+                         .requestMatchers("/").permitAll()
+                         .requestMatchers("/refresh").permitAll()
+-                        .requestMatchers("/user","/user/admins","/user/super_admins").permitAll()
++                        .requestMatchers("/user","/user/admins","/user/super_admins","/user/admin").permitAll()
+                         .requestMatchers("/fileController").permitAll()
+                         .anyRequest().authenticated()
+         ).addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);
+Index: gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.gymbackend.controller;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.example.gymbackend.dto.LoginDto;\r\nimport org.example.gymbackend.dto.RegisterDto;\r\nimport org.example.gymbackend.service.auth.AuthService;\r\nimport org.example.gymbackend.service.user.UserService;\r\nimport org.springframework.http.HttpEntity;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.security.access.prepost.PreAuthorize;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.Map;\r\n\r\n@RestController\r\n@RequiredArgsConstructor\r\n@RequestMapping(\"/user\")\r\n@CrossOrigin\r\npublic class UserController {\r\n    private final UserService userService;\r\n    private final AuthService authService;\r\n    @GetMapping\r\n    @PreAuthorize(\"hasAnyRole('ROLE_ADMIN')\")\r\n    public HttpEntity<?> getAllUsers(){\r\n        HttpEntity<?> allUsers = userService.getAllUsers();\r\n        return ResponseEntity.ok(allUsers);\r\n    }\r\n\r\n    @PostMapping\r\n    @PreAuthorize(\"hasRole('ROLE_ADMIN')\")\r\n    public HttpEntity<?> savePost(@RequestBody RegisterDto registerDto){\r\n        HttpEntity<?> register = userService.save(registerDto);\r\n        return ResponseEntity.ok(register);\r\n    }\r\n\r\n    @PostMapping(\"/login\")\r\n    public HttpEntity<?> generate(@RequestBody LoginDto dto) {\r\n        Map<String, String> stringStringMap = authService.loginUser(dto);\r\n        return ResponseEntity.ok(stringStringMap);\r\n    }\r\n\r\n    //bundan maqsad admin va super_adminni ajratish\r\n    @GetMapping(\"/admins\")\r\n    @PreAuthorize(\"hasAnyRole('ROLE_SUPER_ADMIN')\")\r\n    public HttpEntity<?> admins() {\r\n        return ResponseEntity.status(200).body(\"super_admin\");\r\n    }\r\n\r\n    @GetMapping(\"/super_admins\")\r\n    @PreAuthorize(\"hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')\")\r\n    public HttpEntity<?> super_admins() {\r\n        return ResponseEntity.status(200).body(\"super_admin\");\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java b/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java
+--- a/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java	(revision f4b3c6188763c3043ad9adfdc58d5b6893b40b4f)
++++ b/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java	(date 1715323127230)
+@@ -51,4 +51,11 @@
+         return ResponseEntity.status(200).body("super_admin");
+     }
+ 
++    @GetMapping("/admin")
++    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')")
++    public HttpEntity<?> admin() {
++        return ResponseEntity.status(200).body("admin");
++    }
++
++
+ }
+Index: gym-frontend/src/auth/Login.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import  { useState } from 'react';\r\nimport { useNavigate } from 'react-router-dom';\r\nimport axios from 'axios';\r\nimport { ToastContainer, toast } from 'react-toastify';\r\nimport 'react-toastify/dist/ReactToastify.css';\r\nimport apiCall from \"../apicall/apiCall.js\";\r\nfunction Login() {\r\n    const [user, setUser] = useState({ phoneNumber: '', password: '' });\r\n    const navigate = useNavigate();\r\n\r\n\r\n\r\n    function loginUser() {\r\n        if (!user.phoneNumber || !user.password) {\r\n            toast.error(\"Iltimos, telefon raqam va parolni to'liq kiriting.\");\r\n            return;\r\n        }\r\n\r\n        axios({\r\n\r\n            url: 'http://localhost:8080/user/login',\r\n            method: 'post',\r\n            data: user\r\n        })\r\n            .then((res) => {\r\n                if (res.data) {\r\n\r\n                    apiCall(`/user/super_admins`, \"GET\",{}, { Authorization:res.data.access_token })\r\n                        .then((resNotUser) => {\r\n                          if (resNotUser){\r\n                              localStorage.setItem('access_token', res.data.access_token);\r\n                              localStorage.setItem('refresh_token', res.data.refresh_token);\r\n                              apiCall(`/user/admins`, \"GET\",{}, { Authorization:res.data.access_token })\r\n                                  .then(() => {\r\n                                      setUser({ phoneNumber: '', password: '' });\r\n                                      navigate(\"/superAdmin\");\r\n\r\n                                  })\r\n                                  .catch(() => {\r\n                                      setUser({ phoneNumber: '', password: '' });\r\n                                      navigate(\"/addAdmin\");\r\n                                  });\r\n                          }\r\n\r\n                        })\r\n                        .catch(() => {\r\n                            console.log(\"user bu\")\r\n                        });\r\n                } else {\r\n                    toast.error(\"Kirish muvaffaqiyatsiz. Iltimos, tekshiring va qayta urinib ko'ring.\");\r\n                }\r\n            }).catch(() => toast.error(\"Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.\"));\r\n    }\r\n\r\n    return (\r\n\r\n            <div className={\"big_mean\"} >\r\n                <div className=\"card\">\r\n                    <ToastContainer/>\r\n                    <h1 style={{textAlign: \"center\", fontSize: \"40px\", marginBottom: \"10px\"}}>Login</h1>\r\n                    <div className=\"input-field\">\r\n                        <input\r\n                            onChange={(e) => setUser({...user, phoneNumber: e.target.value})}\r\n                            value={user.phoneNumber}\r\n                            placeholder=\"PhoneNumber...\"\r\n                            type=\"text\"\r\n                        />\r\n                    </div>\r\n                    <div className=\"input-field\">\r\n                        <input\r\n                            onChange={(e) => setUser({...user, password: e.target.value})}\r\n                            value={user.password}\r\n                            placeholder=\"Password...\"\r\n                            type=\"password\"\r\n                        />\r\n                    </div>\r\n                    <button onClick={loginUser} className=\"buttonS\">\r\n                        Login\r\n                    </button>\r\n                </div>\r\n            </div>\r\n    );\r\n}\r\n\r\nexport default Login;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gym-frontend/src/auth/Login.jsx b/gym-frontend/src/auth/Login.jsx
+--- a/gym-frontend/src/auth/Login.jsx	(revision f4b3c6188763c3043ad9adfdc58d5b6893b40b4f)
++++ b/gym-frontend/src/auth/Login.jsx	(date 1715323069144)
+@@ -34,7 +34,6 @@
+                                   .then(() => {
+                                       setUser({ phoneNumber: '', password: '' });
+                                       navigate("/superAdmin");
+-
+                                   })
+                                   .catch(() => {
+                                       setUser({ phoneNumber: '', password: '' });
+Index: gym-frontend/src/SuperAdmin.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {useNavigate} from \"react-router-dom\";\r\nimport {useEffect} from \"react\";\r\nimport apiCall from \"./apicall/apiCall.js\";\r\n\r\nfunction SuperAdmin() {\r\n\r\n        const naviget = useNavigate();\r\n\r\n    useEffect(()=>{\r\n\r\n\r\n        if (localStorage.getItem(\"access_token\")!=null){\r\n            apiCall(`/user/super_admin`, \"GET\",{}, { Authorization:localStorage.getItem(\"access_token\") })\r\n                .then(() => {\r\n                })\r\n                .catch(() => {\r\n                    naviget(\"/admin_page\");\r\n                });\r\n\r\n        }else {\r\n            naviget(\"/404\")\r\n        }\r\n\r\n    },[])\r\n\r\n    let navigate = useNavigate();\r\n\r\n\r\n    function navigateSettings() {\r\n        navigate(\"/superSettings\")\r\n    }\r\n\r\n    function navigateGym() {\r\n        navigate(\"/gym\")\r\n    }\r\n\r\n\r\n    return (\r\n        <div className={\"container d-flex justify-content-center\"}>\r\n                <button onClick={()=>navigateGym()} className={\"btn btn-secondary m-1 rounded-0\"}>GYMS</button>\r\n\r\n                <button onClick={()=>navigateSettings()} className={\"btn btn-secondary m-1 rounded-0\"}>Sozlamalar</button>\r\n        </div>\r\n    );\r\n}\r\n\r\nexport default SuperAdmin;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gym-frontend/src/SuperAdmin.jsx b/gym-frontend/src/SuperAdmin.jsx
+--- a/gym-frontend/src/SuperAdmin.jsx	(revision f4b3c6188763c3043ad9adfdc58d5b6893b40b4f)
++++ b/gym-frontend/src/SuperAdmin.jsx	(date 1715323733471)
+@@ -10,11 +10,12 @@
+ 
+ 
+         if (localStorage.getItem("access_token")!=null){
+-            apiCall(`/user/super_admin`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
++            apiCall(`/user/admins`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
+                 .then(() => {
++                    console.log("salom")
+                 })
+                 .catch(() => {
+-                    naviget("/admin_page");
++                    naviget("/404");
+                 });
+ 
+         }else {
+Index: gym-frontend/src/AddAdmin.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {useEffect, useState} from \"react\";\r\nimport apiCall from \"./apicall/apiCall.js\";\r\nimport {useNavigate} from \"react-router-dom\";\r\n\r\nfunction AddAdmin() {\r\n    const [fullName, setFullName] = useState(\"\")\r\n    const [phoneNumber, setPhoneNumber] = useState(\"\")\r\n    const [password, setPassword] = useState(\"\")\r\n\r\n    function addAdmin() {\r\n        apiCall(\"/admin\", \"POST\",{fullName, phoneNumber, password})\r\n    }\r\n\r\n    const navigets = useNavigate();\r\n\r\n    useEffect(()=>{\r\n\r\n\r\n        if (localStorage.getItem(\"access_token\")!=null){\r\n            apiCall(`/user/super_admin`, \"GET\",{}, { Authorization:localStorage.getItem(\"access_token\") })\r\n                .then(() => {\r\n                })\r\n                .catch(() => {\r\n                    navigets(\"/addAdmin\");\r\n                });\r\n\r\n        }else {\r\n            navigets(\"/404\")\r\n        }\r\n\r\n    },[])\r\n    return (\r\n        <div>\r\n            <div>\r\n                <input type={\"text\"} value={fullName} onChange={(e)=>setFullName(e.target.value)} placeholder={\"Ism...\"}/>\r\n                <input type={\"text\"} value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)} placeholder={\"Telefon raqam...\"}/>\r\n                <input type={\"text\"} value={password} onChange={(e)=>setPassword(e.target.value)} placeholder={\"Parol...\"}/>\r\n                <button onClick={()=>addAdmin()}>{\"Qo'shish\"}</button>\r\n            </div>\r\n        </div>\r\n    );\r\n}\r\n\r\nexport default AddAdmin;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gym-frontend/src/AddAdmin.jsx b/gym-frontend/src/AddAdmin.jsx
+--- a/gym-frontend/src/AddAdmin.jsx	(revision f4b3c6188763c3043ad9adfdc58d5b6893b40b4f)
++++ b/gym-frontend/src/AddAdmin.jsx	(date 1715323733463)
+@@ -17,11 +17,12 @@
+ 
+ 
+         if (localStorage.getItem("access_token")!=null){
+-            apiCall(`/user/super_admin`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
++            apiCall(`/user/admin`, "GET",{}, { Authorization:localStorage.getItem("access_token") })
+                 .then(() => {
++                    console.log("salom")
+                 })
+                 .catch(() => {
+-                    navigets("/addAdmin");
++                    navigets("/login");
+                 });
+ 
+         }else {
