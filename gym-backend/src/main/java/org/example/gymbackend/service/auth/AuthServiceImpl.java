@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -56,14 +57,24 @@ public class AuthServiceImpl implements AuthService {
             );
             String jwt = jwtService.generateJwt(id.toString());
             String refreshJwt = jwtService.generateJwtRefresh(id.toString());
-            return Map.of("access_token", jwt,"refresh_token",refreshJwt);
-        }else return null;
 
+            // Fetching the user's roles
+            Set<String> roles = user.get().getRoles().stream()
+                    .map(Role::getName)
+                    .collect(Collectors.toSet());
+
+            // Including roles in the response map
+            return Map.of("access_token", jwt, "refresh_token", refreshJwt, "roles", String.join(",", roles));
+        } else {
+            return null;
+        }
     }
+
     @Override
     public String refreshToken(String refreshToken) {
         Jws<Claims> claimsJws = jwtService.extractJwt(refreshToken);
-        String id = claimsJws.getBody().getSubject();
+        Claims payload = claimsJws.getPayload();
+        String id = payload.getSubject();
         return jwtService.generateJwt(id);
     }
 }

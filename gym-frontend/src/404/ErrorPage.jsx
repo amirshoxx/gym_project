@@ -1,4 +1,4 @@
-import React from 'react';
+import  'react';
 import img from "../404-not.jpg";
 
 function ErrorPage() {

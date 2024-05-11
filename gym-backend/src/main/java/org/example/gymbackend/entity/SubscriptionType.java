@@ -22,13 +22,11 @@ public class SubscriptionType {
     private UUID id;
     private String name;
     private Double price;
-    private String title;
     private Integer dayCount;
-
-    public SubscriptionType(String name, Double price, String title, Integer dayCount) {
+private boolean datType;
+    public SubscriptionType(String name, Double price, Integer dayCount) {
         this.name = name;
         this.price = price;
-        this.title = title;
         this.dayCount = dayCount;
     }
 }

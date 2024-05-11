@@ -40,6 +40,14 @@ public class User implements UserDetails {
         this.image = image;
     }
 
+    public User(String fullName, String phoneNumber, String password, String image, List<Role> roles) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.image = image;
+        this.roles = roles;
+    }
+
     public User(String fullName, String phoneNumber, String password, List<Role> roles) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;

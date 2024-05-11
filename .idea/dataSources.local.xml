@@ -2,6 +2,8 @@
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-241.15989.150">
     <data-source name="postgres@localhost" uuid="9cc07a62-85c2-46a9-b6d3-7c1b5334b9f9">
+  <component name="dataSourceStorageLocal" created-in="IU-241.14494.240">
+    <data-source name="postgres@localhost" uuid="18b75959-04a6-4db6-96ac-6facdca43b97">
       <database-info product="PostgreSQL" version="16.2" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="16.2" exact-driver-version="42.6">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -12,6 +14,8 @@
         <introspection-scope>
           <node kind="database" qname="@">
             <node kind="schema" qname="@" />
+          <node kind="database" qname="gym_database">
+            <node kind="schema" negative="1" />
           </node>
         </introspection-scope>
       </schema-mapping>
