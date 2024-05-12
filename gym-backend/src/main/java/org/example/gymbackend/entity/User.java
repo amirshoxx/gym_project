@@ -55,6 +55,8 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;

@@ -11,5 +11,6 @@ public interface UserService {
 
     HttpEntity<?> save(RegisterDto registerDto);
 
+    HttpEntity<?> search(String phoneNumber);
 
 }

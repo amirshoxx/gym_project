@@ -19,7 +19,6 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 @RequiredArgsConstructor
 @SpringBootApplication
 public class GymBackendApplication {
-
     public static void main(String[] args) throws TelegramApiException {
         ApplicationContext context = SpringApplication.run(GymBackendApplication.class, args);
         UserRepo userRepo = context.getBean(UserRepo.class);

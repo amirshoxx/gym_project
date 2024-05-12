@@ -36,7 +36,7 @@ function Login() {
                             })
                                 .catch(() => {
                                     setUser({ phoneNumber: '', password: '' });
-                                    navigate("/addAdmin");
+                                    navigate("/users");
                                 });
                         }
 

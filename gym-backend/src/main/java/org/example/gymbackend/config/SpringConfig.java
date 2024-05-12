@@ -39,10 +39,12 @@ public class SpringConfig {
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/user/login").permitAll()
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("user/refresh").permitAll()
+                        .requestMatchers("/user/refresh").permitAll()
                         .requestMatchers("/user","/user/admins","/user/super_admins","/user/admin").permitAll()
                         .requestMatchers("/fileController").permitAll()
                         .requestMatchers("/fileController/{image}").permitAll()
+                        .requestMatchers("/subscription").permitAll()
+                        .requestMatchers("/subscription/search").permitAll()
                         .anyRequest().authenticated()
         ).addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();

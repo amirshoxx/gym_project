@@ -151,7 +151,7 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                     if (findUserOptional.isPresent()) {
                         User findUser = findUserOptional.get();
                         List<Role> roles = findUser.getRoles();
-                        Role admin = roleRepo.findByName("ROLE_ADMIN");
+                        Role admin = roleRepo.findByName("ROLE_ADMIN").get();
 
                         for (Role role : roles) {
                             if (role.equals(admin)){

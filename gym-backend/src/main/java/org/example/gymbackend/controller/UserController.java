@@ -21,7 +21,7 @@ public class UserController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public HttpEntity<?> getAllUsers(){
         HttpEntity<?> allUsers = userService.getAllUsers();
-        return ResponseEntity.ok(allUsers);
+        return allUsers;
     }
 
     @PostMapping

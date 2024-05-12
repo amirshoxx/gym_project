@@ -4,22 +4,71 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26d5936-cc02-4d37-8fa6-17d196245600" name="Changes" comment="amir">
+    <list default="true" id="e26d5936-cc02-4d37-8fa6-17d196245600" name="Changes" comment="ended">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/SubscriptionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/dto/SubscriptionDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/projection/SubscriptionProjection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/SubscriptionRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/subscriptions/SubscriptionImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/subscriptions/SubscriptionsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym-backend/src/test/java/org/example/gymbackend/repository/UserRepoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym-backend/src/test/java/org/example/gymbackend/service/user/UserServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ef38a06-d390-41af-ad27-033f89d3745b.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ef38a06-d390-41af-ad27-033f89d3745b/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ef38a06-d390-41af-ad27-033f89d3745b/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/GymBackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/GymBackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/Subscription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/RoleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/RoleRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/UserRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/jwt/JwtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/jwt/JwtServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/user/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/telegramBot/GYMTelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/telegramBot/GYMTelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-frontend/src/AddAdmin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/AddAdmin.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-frontend/src/SuperAdmin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/SuperAdmin.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-frontend/src/auth/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/auth/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-frontend/src/users/User.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/users/User.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2gH81gqDdfayrFT3BUfGdcHVFd8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -28,31 +77,93 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.User.jsx.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.GymBackendApplication.executor": "Run",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.UserServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.getAllUsers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.save.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.User.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.GymBackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager" selected="Spring Boot.GymBackendApplication">
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.gymbackend.service.user" />
+      <recent name="org.example.gymbackend.repository" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gym-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.gymbackend.service.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.gymbackend.service.user" />
+      <option name="MAIN_CLASS_NAME" value="org.example.gymbackend.service.user.UserServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.getAllUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gym-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.gymbackend.service.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.gymbackend.service.user" />
+      <option name="MAIN_CLASS_NAME" value="org.example.gymbackend.service.user.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="getAllUsers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.save" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gym-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.gymbackend.service.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.gymbackend.service.user" />
+      <option name="MAIN_CLASS_NAME" value="org.example.gymbackend.service.user.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="save" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GymBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gym-backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.gymbackend.GymBackendApplication" />
@@ -78,8 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GymBackendApplication" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="Spring Boot.GymBackendApplication" />
+        <item itemvalue="JUnit.UserServiceImplTest.getAllUsers" />
+        <item itemvalue="JUnit.UserServiceImplTest.save" />
+        <item itemvalue="JUnit.UserServiceImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -107,7 +221,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715342931839</updated>
-      <workItem from="1715342934460" duration="1141000" />
+      <workItem from="1715342934460" duration="2451000" />
+      <workItem from="1715400561179" duration="4914000" />
+      <workItem from="1715406099531" duration="837000" />
+      <workItem from="1715409835977" duration="345000" />
+      <workItem from="1715414945802" duration="15519000" />
+      <workItem from="1715430750086" duration="131000" />
+      <workItem from="1715501226140" duration="5401000" />
     </task>
     <task id="LOCAL-00002" summary="amir">
       <option name="closed" value="true" />
@@ -117,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715343358075</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ended">
+      <option name="closed" value="true" />
+      <created>1715344242178</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715344242178</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +264,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="amir" />
-    <option name="LAST_COMMIT_MESSAGE" value="amir" />
+    <MESSAGE value="ended" />
+    <option name="LAST_COMMIT_MESSAGE" value="ended" />
   </component>
 </project>
