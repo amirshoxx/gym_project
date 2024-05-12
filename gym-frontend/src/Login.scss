@@ -8,11 +8,16 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url('gym-senter.jpg');
+  background-image: url('photo_2024-05-12_15-29-57.jpg');
   background-size: cover;
 max-width: 100%;
 }
 
+.card{
+  margin: 0;
+  padding: 20px;
+  width: 25%;
+}
 
 
 .card h1 {
@@ -38,13 +43,18 @@ max-width: 100%;
 }
 
 .buttonS {
-  background-color: #ff6f8b;
+  background-color: #0081ff;
   color: #ffffff;
   border: none;
   padding: 15px 30px;
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20%;
 }
 
 .buttonS:hover {

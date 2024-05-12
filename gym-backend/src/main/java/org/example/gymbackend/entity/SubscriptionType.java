@@ -1,29 +1,24 @@
 package org.example.gymbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "subscription_type")
-@Builder
 public class SubscriptionType {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "uuid default gen_random_uuid()")
     private UUID id;
     private String name;
     private Double price;
     private Integer dayCount;
-private boolean datType;
+     private boolean datType;
     public SubscriptionType(String name, Double price, Integer dayCount) {
         this.name = name;
         this.price = price;

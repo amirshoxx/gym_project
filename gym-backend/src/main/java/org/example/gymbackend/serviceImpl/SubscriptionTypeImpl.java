@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class SubscriptionTypeImpl implements SubscriptionTypeService {
     private final SubscriptionTypeRepo subscriptionTypeRepo;
     @Override
