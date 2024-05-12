@@ -32,14 +32,12 @@ public class Subscription {
     private Integer dayCount;
 
 
-    public Subscription(LocalDate startTime, LocalDate endTime, SubscriptionType subscriptionType, Double price, Boolean status, Boolean limited, User user, Integer dayCount) {
+    public Subscription(LocalDate startTime, LocalDate endTime, Double price, Boolean status, Boolean limited,  Integer dayCount) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.subscriptionType = subscriptionType;
         this.price = price;
         this.status = status;
         this.limited = limited;
-        this.user = user;
         this.dayCount = dayCount;
     }
 

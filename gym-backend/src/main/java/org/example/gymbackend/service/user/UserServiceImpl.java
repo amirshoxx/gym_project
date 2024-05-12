@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public HttpEntity<?> save(RegisterDto dto) {
-        Optional<Role> roleUser = Optional.ofNullable(roleRepo.findByName("ROLE_USER"));
+        Optional<Role> roleUser = roleRepo.findByName("ROLE_USER");
         User user  = new User();
         user.setId(UUID.randomUUID());
         user.setFullName(dto.getFullName());

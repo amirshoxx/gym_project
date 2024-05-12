@@ -3,20 +3,23 @@ import {useNavigate} from "react-router-dom";
 import apiCall from "../apicall/apiCall.js";
 import {useEffect, useState} from "react";
 import "./User.css"
+import user from"./user.png"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.css"
 function User() {
     useEffect(()=>{
         getUsers()
+        getSubscriptionType()
     },[])
-    const [password, setPassword] = useState('')
     const [users, setUsers] = useState([])
     const [fullName, setFullName] = useState('')
     const [selectFullName, setSelectFullName] = useState('')
     const [phone, setPhone] = useState('')
     const [selectPhone, setSelectPhone] = useState('')
     const [selectedFile, setSelectedFile] = useState("");
+    const [selectSubsc,setSelectSubsc] = useState("")
+    const [subsc, setSubsc] = useState([]);
 
     function getUsers(){
         apiCall("/user","GET",{},{Authorization:localStorage.getItem("access_token")}).then(res=>{
@@ -30,8 +33,6 @@ function User() {
                 })
         })
     }
-
-
     const navigets = useNavigate();
 
     useEffect(() => {
@@ -59,14 +60,9 @@ function User() {
 
 
     function submit() {
-        const formData = new FormData();
-        formData.append('file', selectedFile);
-        if (fullName&&password&&selectedFile&&phone) {
-            apiCall("/fileController", "POST", formData)
-                .then(res => {
+        if (fullName&&selectedFile&&phone) {
                     apiCall("/user", "POST", {
                         phone,
-                        image:res.data,
                         fullName
                     },{Authorization:localStorage.getItem("access_token")})
                         .then(() =>
@@ -79,7 +75,6 @@ function User() {
                             localStorage.setItem("access_token", res.data);
                             getUsers()
                         }))
-                })
         }
     }
 
@@ -89,7 +84,6 @@ function User() {
             setUsers(res.data)
         })
     }
-
     function selectUser(u) {
         let image = u.image;
         let fullName = u.fullName;
@@ -98,56 +92,107 @@ function User() {
         setSelectFullName(fullName)
         setSelectPhone(phoneNumber)
     }
+    function getSubscriptionType(){
+        apiCall("/subscriptionType", "GET", {},{Authorization:localStorage.getItem("access_token")})
+            .then((res) =>
+                    setSubsc(res.data),
+            )
+            .catch(()=>
+                apiCall("/user/refresh", "POST", {}, { refreshToken : localStorage.getItem("refresh_token") })
+                    .then(res => {
+                        localStorage.setItem("access_token", res.data);
+                    }))
+    }
+
+
+    function saveSubscription() {
+        apiCall("/subscription", "POST", {
+            image:selectedFile?selectedFile:user,
+            fullName:selectFullName?selectFullName:fullName,
+            phoneNumber:selectPhone?selectPhone:phone,
+            subscriptionId:selectSubsc
+        },{Authorization:localStorage.getItem("access_token")})
+            .then((res) =>
+                toast.success("Added Successfully"),
+            )
+            .catch(()=>
+                apiCall("/user/refresh", "POST", {}, { refreshToken : localStorage.getItem("refresh_token") })
+                    .then(res => {
+                        localStorage.setItem("access_token", res.data);
+                    }))
+        setSelectSubsc("")
+        setSelectedFile("")
+        setSelectFullName("")
+        setSelectPhone("")
+    }
 
     return (
-        <div >
+        <div className={"user_sv"} >
             <ToastContainer/>
             <div className={"register-header"}>
                 Users
             </div>
             <div className={"card-login"}>
-                <p className={"text-black"}>Qidiruv:</p>
+                <p className={"text-info"}>Qidiruv:</p>
                 <input
                     value={phone}
                     onChange={(e)=>searchs(e.target.value)}
-                    className={"form-control my-2"}
+                    className={"form-control my-2 bg-transparent text-info"}
                     placeholder={"+998*******"}
                     type={"text"}
                 />
                 <div className={"d-flex justify-content-between"}>
-                    <div style={{width:400+"px"}}>
+                    <div style={{width:300+"px"}}>
                         {
                             selectedFile ?  <img className={"w-100 h-100"}
-                                 src={`http://localhost:8080/fileController?image=${selectedFile}`} alt=""/> :<h1>PHOTO</h1>
-
+                                 src={`http://localhost:8080/fileController?image=${selectedFile}`} alt=""/> :<h1 className={"text-info"}>PHOTO</h1>
                         }
                     </div>
-                    <div>
+                    <div className={"w-50 d-flex flex-column m-2"}>
                         <div className={"d-flex"}>
-                        <h1>FullName:</h1>
+                            <h3 className={"text-info"}>Name: </h3>
                             {
                                 selectFullName ?
-                                    <input value={selectFullName} className={"form-control"} type="text"/> :
-                                    <input value={fullName} onChange={(e)=>setFullName(e.target.value)} type="text"/>
+                                    <input value={selectFullName} className={"form-control text-light bg-transparent "}
+                                           type="text"/> :
+                                    <input className={"form-control text-light bg-transparent"} value={fullName}
+                                           onChange={(e) => setFullName(e.target.value)} type="text"/>
                             }
 
 
                         </div>
                         <div className={"d-flex"}>
-                        <h1>Phone:</h1>
+                            <h3 className={"text-info"}>Phone: </h3>
                             {
                                 selectPhone ?
-                                    <input value={selectPhone} className={"form-control"} type="text"/> :
-                                    <input value={phone} onChange={(e)=>setPhone(e.target.value)} type="text"/>
+                                    <input value={selectPhone} className={"form-control text-light bg-transparent"}
+                                           type="text"/> :
+                                    <input className={"form-control text-light  bg-transparent"} value={phone}
+                                           onChange={(e) => setPhone(e.target.value)} type="text"/>
                             }
                         </div>
+                        <div className={"d-flex"}>
+                            <h3 className={"text-info"}>Subsc: </h3>
+                            {
+                                    <select onChange={(e)=>setSelectSubsc(e.target.value)} className={"form-control text-success bg-transparent"}>
+                                        <option className={"bg-transparent "} value="0">Select subscription_type
+                                        </option>
+                                        {
+                                            subsc.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)
+                                        }
+                                    </select>
+                            }
+                            <button onClick={saveSubscription}  className={"btn btn-dark mx-3"}>
+                                Tasdiqlash
+                            </button>
+                        </div>
                     </div>
-<div></div>
+                    <div>
+                        ds
+                    </div>
                 </div>
                 <button onClick={submit} className={"register-button"}>+</button>
-
-
-                <table>
+                <table className={"table table-bordered table-responsive table-hover bg-transparent"}>
                     <thead>
                     <tr>
                         <th>N/O</th>
@@ -157,8 +202,8 @@ function User() {
                     </tr>
                     </thead>
                     <tbody>
-                    {
-                 users &&   users.map((u,i)=> <tr key={u.id} onClick={()=>selectUser(u)}>
+                     {
+                 users &&   users.map((u,i)=> <tr   key={u.id} onClick={()=>selectUser(u)}>
                             <td>{i+1}</td>
                             <td>{u.fullName}</td>
                             <td>{u.phoneNumber}</td>

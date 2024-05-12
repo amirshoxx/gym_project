@@ -2,6 +2,7 @@ package org.example.gymbackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.gymbackend.dto.SubscriptionDto;
+import org.example.gymbackend.repository.SubscriptionRepo;
 import org.example.gymbackend.service.subscriptions.SubscriptionsService;
 import org.example.gymbackend.service.user.UserService;
 import org.springframework.http.HttpEntity;

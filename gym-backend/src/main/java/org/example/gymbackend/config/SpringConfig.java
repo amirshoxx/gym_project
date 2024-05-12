@@ -44,6 +44,7 @@ public class SpringConfig {
                         .requestMatchers("/fileController").permitAll()
                         .requestMatchers("/fileController/{image}").permitAll()
                         .requestMatchers("/subscription").permitAll()
+                        .requestMatchers("/subscriptionType").permitAll()
                         .requestMatchers("/subscription/search").permitAll()
                         .anyRequest().authenticated()
         ).addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);

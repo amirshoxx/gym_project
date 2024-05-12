@@ -9,24 +9,18 @@ import PhoneInput from "react-phone-input-2";
 function Login() {
     const [user, setUser] = useState({ phoneNumber: '', password: '' });
     const navigate = useNavigate();
-
-
-
     function loginUser() {
         if (!user.phoneNumber || !user.password) {
             toast.error("Iltimos, telefon raqam va parolni to'liq kiriting.");
             return;
         }
-
         axios({
-
             url: 'http://localhost:8080/user/login',
             method: 'post',
             data: user
         })
             .then((res) => {
                 if (res.data) {
-
                     apiCall(`/user/super_admins`, "GET",{}, { Authorization:res.data.access_token })
                         .then((resNotUser) => {
                           if (resNotUser){
@@ -39,7 +33,7 @@ function Login() {
                                   })
                                   .catch(() => {
                                       setUser({ phoneNumber: '', password: '' });
-                                      navigate("/addAdmin");
+                                      navigate("/users");
                                   });
                           }
 
@@ -54,16 +48,13 @@ function Login() {
     }
 
     return (
-
             <div className={"big_mean"} >
                 <div className="card">
                     <ToastContainer/>
                     <h1 style={{textAlign: "center", fontSize: "40px", marginBottom: "10px"}}>Login</h1>
                     <div className="input-field">
                         <PhoneInput
-
                             country={"uz"}
-
                             onChange={(e) => setUser({...user, phoneNumber: e})}
                             value={user.phoneNumber}
                         />
@@ -76,7 +67,6 @@ function Login() {
                             type="password"
                         />
                     </div>
-
                     <button onClick={loginUser} className="buttonS">
                         Login
                     </button>
@@ -84,5 +74,4 @@ function Login() {
             </div>
     );
 }
-
 export default Login;
