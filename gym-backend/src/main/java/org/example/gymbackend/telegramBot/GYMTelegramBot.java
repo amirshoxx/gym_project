@@ -48,12 +48,12 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "mysfirst_bot";
+        return "beckendone_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "6354925162:AAFvora9cWk4mCacmnGoEsBDQ73Zu7ihgGM";
+        return "6471586814:AAEO3vwCoYbueSFtoYwN4UCaERbhi2gO_5U";
     }
 
     String[] subscriptionInfo = new String[4];
@@ -102,36 +102,56 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                     userRepo.save(user);
                 } else if (user.getStatus().equals(Status.TARIF_ADD)) {
                     subscriptionInfo = new String[4]; // Tozalash
-                        user.setStatus(Status.ADD_SUBSCRIPTION_NAME);
-                        sendMessage.setText("Nomini kiriting");
+                    user.setStatus(Status.ADD_SUBSCRIPTION_NAME);
+                    sendMessage.setText("Nomini kiriting");
+                    sendMessage.setChatId(chatId);
+                    execute(sendMessage);
+                    userRepo.save(user);
+                } else if (user.getStatus().equals(Status.ADD_SUBSCRIPTION_NAME)) {
+                    try {
+                        Integer.parseInt(text2); // Checking if a number is entered
+                        sendMessage.setText("Nomini raqam emas, iltimos matn kiriting.");
                         sendMessage.setChatId(chatId);
                         execute(sendMessage);
-                        userRepo.save(user);
-                } else if (user.getStatus().equals(Status.ADD_SUBSCRIPTION_NAME)) {
-                    user.setStatus(Status.ADD_SUBSCRIPTION_REQUEST_PRICE);
-
+                    } catch (NumberFormatException e) {
+                        user.setStatus(Status.ADD_SUBSCRIPTION_REQUEST_PRICE);
                         subscriptionInfo[0] = text2;
                         sendMessage.setText("Narxini kiriting");
                         sendMessage.setChatId(chatId);
                         execute(sendMessage);
                         userRepo.save(user);
-
+                    }
                 } else if (user.getStatus().equals(Status.ADD_SUBSCRIPTION_REQUEST_PRICE)) {
-                    subscriptionInfo[1] = text2;
-                    user.setStatus(Status.ADD_SUBSCRIPTION_REQUEST_DAY_COUNT);
-                    sendMessage.setText("Kunni kiriting");
-                    sendMessage.setChatId(chatId);
-                    execute(sendMessage);
-                    userRepo.save(user);
+                    try {
+                        Double.parseDouble(text2); // Checking if a valid price is entered
+                        subscriptionInfo[1] = text2;
+                        user.setStatus(Status.ADD_SUBSCRIPTION_REQUEST_DAY_COUNT);
+                        sendMessage.setText("Kunni kiriting");
+                        sendMessage.setChatId(chatId);
+                        execute(sendMessage);
+                        userRepo.save(user);
+                    } catch (NumberFormatException e) {
+                        sendMessage.setText("Xatolik sodir bo'ldi. Iltimos, narxni raqamda kiriting.");
+                        sendMessage.setChatId(chatId);
+                        execute(sendMessage);
+                    }
                 } else if (user.getStatus().equals(Status.ADD_SUBSCRIPTION_REQUEST_DAY_COUNT)) {
-                    subscriptionInfo[2] = text2;
-                    user.setStatus(Status.SET_ODD_AND_EVEN);
-                    sendMessage.setText("Har kun (Ha) cherezden kun (Yo'q)");
-                    sendMessage.setReplyMarkup(genOddAndEvenButtons());
-                    sendMessage.setChatId(chatId);
-                    execute(sendMessage);
-                    userRepo.save(user);
+                    try {
+                        Integer.parseInt(text2); // Checking if a valid day count is entered
+                        subscriptionInfo[2] = text2;
+                        user.setStatus(Status.SET_ODD_AND_EVEN);
+                        sendMessage.setText("Har kun (Ha) cherezden kun (Yo'q)");
+                        sendMessage.setReplyMarkup(genOddAndEvenButtons());
+                        sendMessage.setChatId(chatId);
+                        execute(sendMessage);
+                        userRepo.save(user);
+                    } catch (NumberFormatException e) {
+                        sendMessage.setText("Xatolik sodir bo'ldi. Iltimos, kunni raqamda kiriting.");
+                        sendMessage.setChatId(chatId);
+                        execute(sendMessage);
+                    }
                 }
+
 
             } else if (message.hasContact()) {
 
@@ -174,7 +194,6 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
                     List<PhotoSize> photos = message.getPhoto();
                     String fileId = photos.get(0).getFileId();
 
-                    // Download the photo file
                     GetFile getFile = new GetFile(fileId);
                     File file = execute(getFile);
 

@@ -15,6 +15,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="khamroyev &lt;bekzodjonhamroyev@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -63,6 +68,11 @@
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
       &quot;postgresql&quot;
+    ],
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
 }</component>
@@ -125,7 +135,7 @@
       <workItem from="1715392713595" duration="823000" />
       <workItem from="1715393902124" duration="3221000" />
       <workItem from="1715400866755" duration="2464000" />
-      <workItem from="1715403434611" duration="16758000" />
+      <workItem from="1715403434611" duration="28597000" />
     </task>
     <task id="LOCAL-00002" summary="amir">
       <option name="closed" value="true" />
@@ -135,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715343358075</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="tashrif add inlineButton">
+      <option name="closed" value="true" />
+      <created>1715422646113</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715422646117</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +172,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="amir" />
-    <option name="LAST_COMMIT_MESSAGE" value="amir" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/dataSources.xml&#10;#&#9;gym-backend/src/main/java/org/example/gymbackend/GymBackendApplication.java&#10;#&#9;gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java&#10;#&#9;gym-backend/src/main/java/org/example/gymbackend/entity/User.java&#10;#&#9;gym-backend/src/main/java/org/example/gymbackend/telegramBot/GYMTelegramBot.java" />
+    <MESSAGE value="tashrif add inlineButton" />
+    <option name="LAST_COMMIT_MESSAGE" value="tashrif add inlineButton" />
   </component>
 </project>
