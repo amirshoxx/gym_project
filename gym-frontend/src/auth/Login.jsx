@@ -55,7 +55,7 @@ function Login() {
                     <div className="input-field">
                         <PhoneInput
                             country={"uz"}
-                            onChange={(e) => setUser({...user, phoneNumber: e})}
+                            onChange={(e) => setUser({...user, phoneNumber:'+'+e})}
                             value={user.phoneNumber}
                         />
                     </div>
