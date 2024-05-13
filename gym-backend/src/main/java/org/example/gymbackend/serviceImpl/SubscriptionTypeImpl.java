@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class SubscriptionTypeImpl implements SubscriptionTypeService {
     private final SubscriptionTypeRepo subscriptionTypeRepo;
     @Override
@@ -22,7 +22,7 @@ public class SubscriptionTypeImpl implements SubscriptionTypeService {
 
     @Override
     public ResponseEntity<?> save(SubscriptionTypeDto dto) {
-        subscriptionTypeRepo.save(new SubscriptionType(dto.getName(),dto.getPrice(), dto.getTitle(), dto.getDayCount()));
+        subscriptionTypeRepo.save(new SubscriptionType(dto.getName(),dto.getPrice(),  dto.getDayCount()));
         return ResponseEntity.ok("success");
     }
 
@@ -32,7 +32,6 @@ public class SubscriptionTypeImpl implements SubscriptionTypeService {
         if (dto.getName() != null && dto.getPrice() != null && dto.getTitle() != null && dto.getDayCount() != null){
             subscriptionType.setName(dto.getName());
             subscriptionType.setPrice(dto.getPrice());
-            subscriptionType.setTitle(dto.getTitle());
             subscriptionType.setDayCount(dto.getDayCount());
         }
         return ResponseEntity.ok("update success");

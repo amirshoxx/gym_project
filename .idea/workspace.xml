@@ -4,34 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26d5936-cc02-4d37-8fa6-17d196245600" name="Changes" comment="amir">
-      <change afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/SuperAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/dto/SuperAdminDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/gym_database.f3Pl6w/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/15c21f75-9135-424e-a262-a1bce1ef139e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ef38a06-d390-41af-ad27-033f89d3745b.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ef38a06-d390-41af-ad27-033f89d3745b/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ef38a06-d390-41af-ad27-033f89d3745b/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/RoleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/RoleRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/telegramBot/GYMTelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/telegramBot/GYMTelegramBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/Gym.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/Gym.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/SuperAdmin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/SuperAdmin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/SuperSettings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/SuperSettings.jsx" afterDir="false" />
+    <list default="true" id="e26d5936-cc02-4d37-8fa6-17d196245600" name="Changes" comment="add subscription">
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/auth/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/auth/AuthServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,13 +15,32 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="khamroyev &lt;bekzodjonhamroyev@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;07shohjahon&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/amirshoxx/gym_project.git&quot;,
+    &quot;accountId&quot;: &quot;6fb82ed8-8c92-4361-b523-d27321d57d94&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -59,38 +52,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.User.jsx.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.GymBackendApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.User.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.GymBackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/acer/Desktop/gym_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.example.gymbackend.dto" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager" selected="Spring Boot.GymBackendApplication">
     <configuration name="GymBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gym-backend" />
@@ -147,7 +134,10 @@
       <option name="presentableId" value="Default" />
       <updated>1715342931839</updated>
       <workItem from="1715342934460" duration="1141000" />
-      <workItem from="1715574423480" duration="306000" />
+      <workItem from="1715392713595" duration="823000" />
+      <workItem from="1715393902124" duration="3221000" />
+      <workItem from="1715400866755" duration="2464000" />
+      <workItem from="1715403434611" duration="16758000" />
     </task>
     <task id="LOCAL-00002" summary="amir">
       <option name="closed" value="true" />
@@ -176,7 +166,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="amir" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
+    <option name="LAST_COMMIT_MESSAGE" value="amir" />
   </component>
 </project>

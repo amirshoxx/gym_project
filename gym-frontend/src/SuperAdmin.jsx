@@ -14,6 +14,7 @@ function SuperAdmin() {
             try {
                 if (localStorage.getItem("access_token")) {
                     await apiCall(`/user/admins`, "GET", {}, { Authorization: localStorage.getItem("access_token") });
+                    console.log("salom");
                 } else {
                     navigate("/login");
                 }
