@@ -33,6 +33,8 @@ function Gym() {
     function postGym() {
         axios({url: "http://localhost:8080/gym", method: "POST", data: gym}).then(()=>{
             getGym()
+            setGym({...gym,name:"",location: ""})
+
         })
     }
 
@@ -45,10 +47,10 @@ function Gym() {
     return (
         <div className={"container"}>
             <div className={"d-flex py-3 justify-content-center"}>
-                <input onChange={(e) => {
+                <input value={gym.name} onChange={(e) => {
                     setGym({...gym, name: e.target.value})
                 }} placeholder={"Zalning nomi"} className={"form-control m-1 w-25 shadow"}/>
-                <input onChange={(e) => {
+                <input value={gym.location} onChange={(e) => {
                     setGym({...gym, location: e.target.value})
                 }} placeholder={"Zalning manzili"} className={"form-control m-1 w-25 shadow"}/>
                 <button onClick={() => postGym()} className={"btn btn-primary shadow"}>Add GYM</button>

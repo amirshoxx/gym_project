@@ -1,0 +1,141 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"38ed5d8b-1cfa-4a49-9373-33c56f94983d\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/GymController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/GymController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/Gym.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/Gym.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/GymRepo.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/GymRepo.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/gym-backend/src/main/resources/application.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gym-backend/src/main/resources/application.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/gym-frontend/src/Gym.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gym-frontend/src/Gym.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/gym-frontend/src/getAxios.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gym-frontend/src/getAxios.jsx\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 3\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2gGpjzmjUvYU7lr12u6Rqzui4lF\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"postgresql\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.GymBackendApplication\">\r\n    <configuration name=\"GymBackendApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"gym-backend\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"org.example.gymbackend.GymBackendApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"dev\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/gym-frontend/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"dev\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"npm.dev\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"38ed5d8b-1cfa-4a49-9373-33c56f94983d\" name=\"Changes\" comment=\"\" />\r\n      <created>1715333909794</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1715333909794</updated>\r\n      <workItem from=\"1715333910999\" duration=\"6402000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,17 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="38ed5d8b-1cfa-4a49-9373-33c56f94983d" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/GymController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/GymController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/Gym.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/Gym.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/GymRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/GymRepo.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/resources/application.properties" afterDir="false" />
++    <list default="true" id="38ed5d8b-1cfa-4a49-9373-33c56f94983d" name="Changes" comment="Merge remote-tracking branch 'origin/main'">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/gym-frontend/src/Gym.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/Gym.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/getAxios.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/getAxios.jsx" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -22,45 +14,50 @@
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="PREVIOUS_COMMIT_AUTHORS">
++      <list>
++        <option value="abdugafforov ozodbek &lt;abdugafforovozodbek86@gmail.com&gt;" />
++      </list>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 3
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 3
++}</component>
+   <component name="ProjectId" id="2gGpjzmjUvYU7lr12u6Rqzui4lF" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RequestMappingsPanelOrder0": "0",
+-    "RequestMappingsPanelOrder1": "1",
+-    "RequestMappingsPanelWidth0": "75",
+-    "RequestMappingsPanelWidth1": "75",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "main",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
++    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
++    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
++    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   },
+-  "keyToStringList": {
+-    "DatabaseDriversLRU": [
+-      "postgresql"
++  &quot;keyToStringList&quot;: {
++    &quot;DatabaseDriversLRU&quot;: [
++      &quot;postgresql&quot;
+     ]
+   }
+-}]]></component>
+-  <component name="RunManager" selected="Spring Boot.GymBackendApplication">
++}</component>
++  <component name="RunManager" selected="npm.dev">
+     <configuration name="GymBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+       <module name="gym-backend" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.gymbackend.GymBackendApplication" />
+@@ -92,11 +89,32 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1715333909794</updated>
+-      <workItem from="1715333910999" duration="6402000" />
++      <workItem from="1715333910999" duration="9157000" />
+     </task>
++    <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/main'">
++      <option name="closed" value="true" />
++      <created>1715340627679</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1715340627679</updated>
++    </task>
++    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/main'">
++      <option name="closed" value="true" />
++      <created>1715340636668</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1715340636668</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
++    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
++  </component>
+ </project>
+\ No newline at end of file
