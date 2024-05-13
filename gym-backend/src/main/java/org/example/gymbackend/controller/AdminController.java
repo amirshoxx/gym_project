@@ -2,23 +2,64 @@ package org.example.gymbackend.controller;
 
 import jakarta.validation.Valid;
 import org.example.gymbackend.dto.AdminDto;
+import org.example.gymbackend.entity.Gym;
+import org.example.gymbackend.entity.Role;
+import org.example.gymbackend.entity.User;
+import org.example.gymbackend.repository.AdminRepo;
+import org.example.gymbackend.repository.GymRepo;
+import org.example.gymbackend.repository.RoleRepo;
+import org.example.gymbackend.repository.UserRepo;
 import org.example.gymbackend.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    AdminService userService;
+    UserRepo userRepo;
+    @Autowired
+    GymRepo gymRepo;
+    @Autowired
+    RoleRepo roleRepo;
+    @Autowired
+    AdminRepo adminRepo;
+
+
     @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
-    @PostMapping
-    public ResponseEntity<?> saveAdmin(@RequestBody @Valid AdminDto dto) {
-        return userService.saveAdmin(dto);
+    @PutMapping
+    public ResponseEntity<?> saveAdmin(@RequestBody @Valid AdminDto adminDto) {
+
+        System.out.println(adminDto);
+
+        Gym gym = gymRepo.findById(UUID.fromString(adminDto.getGymId())).orElseThrow();
+        List<Role> roleAdmin = roleRepo.findAllByName("ROLE_ADMIN");
+        List<User> byPhoneNumber = adminRepo.findByPhoneNumber(adminDto.getPhoneNumber());
+
+
+        for (User user1 : byPhoneNumber) {
+            if (user1.getPhoneNumber().equals(adminDto.getPhoneNumber())) {
+                User user = userRepo.findById(user1.getId()).orElseThrow();
+
+                user.setFullName(adminDto.getFullName());
+                user.setPassword(adminDto.getPassword());
+                user.setPhoneNumber(adminDto.getPhoneNumber());
+                user.setGym(gym);
+                user.setRoles(roleAdmin);
+                userRepo.save(user);
+            } else {
+                return ResponseEntity.ok("Oldin kontaktingizni kiriting!!!");
+            }
+
+        }
+
+        return ResponseEntity.ok("Admin qo'shildi");
+
     }
 }

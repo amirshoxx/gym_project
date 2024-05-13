@@ -5,6 +5,7 @@ import org.example.gymbackend.entity.User;
 import org.example.gymbackend.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -16,13 +17,14 @@ public class SuperAdminController {
 
     @Autowired
     UserRepo userRepo;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
-    @PatchMapping
-    public ResponseEntity<?> editSuperAdmin(@RequestBody SuperAdminDto superAdminDto, @RequestParam UUID id) {
+    @PutMapping
+    public ResponseEntity<?> editSuperAdmin(@RequestBody SuperAdminDto superAdminDto, @RequestParam String id) {
 
-
-        User user = userRepo.findById(id).orElseThrow();
-        user.setPassword(superAdminDto.getPassword());
+        User user = userRepo.findById(UUID.fromString(id)).orElseThrow();
+        user.setPassword(passwordEncoder.encode(superAdminDto.getPassword()));
         user.setPhoneNumber(superAdminDto.getPhoneNumber());
         user.setFullName(superAdminDto.getFullName());
         userRepo.save(user);

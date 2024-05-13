@@ -16,12 +16,10 @@ function Gym() {
     useEffect(() => {
         getGym()
     }, [])
-
-
     let navigate = useNavigate();
 
-    function navigateAdmin() {
-        navigate("/addAdmin")
+    function navigateAdmin(id) {
+        navigate(`/addAdmin/${id}`)
     }
 
     function getGym() {
@@ -73,7 +71,7 @@ function Gym() {
                             <td>{itm.name}</td>
                             <td>{itm.location}</td>
                             <td>
-                                <button onClick={() => navigateAdmin()} className={"btn btn-success rounded-0 shadow"}>Admin
+                                <button onClick={() => navigateAdmin(itm.id)} className={"btn btn-success rounded-0 shadow"}>Admin
                                 </button>
                                 <button onClick={()=>deleteGym(itm.id)} className={"btn btn-danger rounded-0 shadow"}>Delete
                                 </button>

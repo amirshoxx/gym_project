@@ -14,18 +14,28 @@ function Login() {
             toast.error("Iltimos, telefon raqam va parolni to'liq kiriting.");
             return;
         }
+
         axios({
             url: 'http://localhost:8080/user/login',
             method: 'post',
             data: user
         })
             .then((res) => {
+
+
+
                 if (res.data) {
                     apiCall(`/user/super_admins`, "GET",{}, { Authorization:res.data.access_token })
                         .then((resNotUser) => {
                           if (resNotUser){
                               localStorage.setItem('access_token', res.data.access_token);
                               localStorage.setItem('refresh_token', res.data.refresh_token);
+
+                              apiCall("/user/getId","GET", {}, {refreshToken:localStorage.getItem("refresh_token")}).then(({data})=>{
+                                  localStorage.setItem("userId", data);
+                                  console.log(data)
+                              })
+
                               apiCall(`/user/admins`, "GET",{}, { Authorization:res.data.access_token })
                                   .then(() => {
                                       setUser({ phoneNumber: '', password: '' });

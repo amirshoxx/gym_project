@@ -29,6 +29,8 @@ public class User implements UserDetails {
     private Status status;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
+    @ManyToOne( fetch = FetchType.EAGER)
+    private Gym gym;
 
     public User(Long chatId) {
         this.chatId = chatId;

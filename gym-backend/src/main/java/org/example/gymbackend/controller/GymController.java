@@ -33,9 +33,7 @@ public class GymController {
         Gym gym = new Gym(
                 UUID.randomUUID(),
                 gymDto.getName(),
-                gymDto.getLocation(),
-                new ArrayList<>()
-
+                gymDto.getLocation()
         );
         Gym save = gymRepo.save(gym);
         return ResponseEntity.ok(save);
