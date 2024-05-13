@@ -10,10 +10,11 @@ function AddAdmin() {
         password: "",
         gymId: id
     })
+    const [admins, setAdmins] = useState([])
 
     function addAdmin() {
         getAxios({url: "/admin", method: "PUT", data: admin}).then(({data}) => {
-            console.log(data)
+            setAdmins(data)
             setAdmin({...admin, fullName: "", phoneNumber: "", password: "", gymId: ""})
         })
     }
@@ -60,7 +61,13 @@ function AddAdmin() {
                 </button>
             </div>
             <hr/>
-
+            <div>
+                <ul className={"list-group"}>
+                    {admins.map((itm) => <li key={itm.id} className={"list-group-item"}>
+                        Name: {itm.fullName} Phone: {itm.phoneNumber} password: {itm.password}
+                    </li>)}
+                </ul>
+            </div>
 
         </div>
     );

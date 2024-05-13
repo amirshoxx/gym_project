@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -36,30 +37,24 @@ public class AdminController {
     @PutMapping
     public ResponseEntity<?> saveAdmin(@RequestBody @Valid AdminDto adminDto) {
 
-        System.out.println(adminDto);
 
         Gym gym = gymRepo.findById(UUID.fromString(adminDto.getGymId())).orElseThrow();
         List<Role> roleAdmin = roleRepo.findAllByName("ROLE_ADMIN");
         List<User> byPhoneNumber = adminRepo.findByPhoneNumber(adminDto.getPhoneNumber());
 
-
         for (User user1 : byPhoneNumber) {
             if (user1.getPhoneNumber().equals(adminDto.getPhoneNumber())) {
                 User user = userRepo.findById(user1.getId()).orElseThrow();
-
                 user.setFullName(adminDto.getFullName());
                 user.setPassword(adminDto.getPassword());
-                user.setPhoneNumber(adminDto.getPhoneNumber());
                 user.setGym(gym);
                 user.setRoles(roleAdmin);
-                userRepo.save(user);
-            } else {
-                return ResponseEntity.ok("Oldin kontaktingizni kiriting!!!");
+                List<User> save = Collections.singletonList(userRepo.save(user));
+                return ResponseEntity.ok(save);
             }
-
         }
 
-        return ResponseEntity.ok("Admin qo'shildi");
+        return ResponseEntity.ok("Oldin kontaktni kiriting!!!");
 
     }
 }
