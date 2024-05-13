@@ -39,6 +39,8 @@ public class SpringConfig {
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/user/login").permitAll()
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/gym").permitAll()
+                        .requestMatchers("/super_admin").permitAll()
                         .requestMatchers("user/refresh").permitAll()
                         .requestMatchers("/user","/user/admins","/user/super_admins","/user/admin").permitAll()
                         .requestMatchers("/fileController").permitAll()
