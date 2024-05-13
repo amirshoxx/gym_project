@@ -18,7 +18,7 @@ public class JwtServiceImpl implements JwtService {
     public String generateJwt(String id) {
 
         return Jwts.builder()
-                .expiration(new Date(System.currentTimeMillis() + 1000 * 60*20))
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60*30))
                 .issuedAt(new Date())
                 .subject(id)
                 .signWith(signInWithKey())
@@ -29,7 +29,7 @@ public class JwtServiceImpl implements JwtService {
     @Override
     public String generateJwtRefresh(String id) {
         return Jwts.builder()
-                .expiration(new Date(System.currentTimeMillis() + 1000 * 60*10))
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60*30))
                 .issuedAt(new Date())
                 .subject(id)
                 .signWith(signInWithKey())

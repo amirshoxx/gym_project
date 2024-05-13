@@ -22,6 +22,7 @@ public class User implements UserDetails {
     private UUID id;
     private Long chatId;
     private String fullName;
+    @Column(unique = true)
     private String phoneNumber;
     private String password;
     private String image;
@@ -56,6 +57,8 @@ public class User implements UserDetails {
         this.password = password;
         this.roles = roles;
     }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

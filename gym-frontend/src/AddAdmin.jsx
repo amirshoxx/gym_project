@@ -17,18 +17,22 @@ function AddAdmin() {
         const fetchData = async () => {
             try {
                 if (localStorage.getItem("access_token")) {
-                    await apiCall(`/user/admin`, "GET", {}, { Authorization: localStorage.getItem("access_token") });
-                    console.log("salom");
+                    const response = await apiCall("/user/admin", "GET", {}, { Authorization: localStorage.getItem("access_token") });
+
+                    if (response.data === "admin") {
+                        console.log("User is a super admin");
+                    } else {
+                        navigets("/login");
+                    }
                 } else {
                     navigets("/login");
                 }
             } catch (error) {
-                navigets("/404");
+                navigets("/login");
             }
         };
 
         fetchData();
-
     }, [navigets]);
 
     return (

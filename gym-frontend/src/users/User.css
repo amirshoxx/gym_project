@@ -2,7 +2,10 @@
 .offset-4 {
     margin-left: 25%; /* Offset by 25% of the container width */
 }
-
+.user_sv{
+    background-image:url('users.jpg');
+    height: 100vh;
+}
 /* Define styles for the register header */
 .register-header {
   align-items: center;

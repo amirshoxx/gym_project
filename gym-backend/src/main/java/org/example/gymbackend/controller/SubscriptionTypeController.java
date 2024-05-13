@@ -10,28 +10,31 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/subscriptionType")
+@RequiredArgsConstructor
 public class SubscriptionTypeController {
-  private final SubscriptionTypeService subscriptionTypeService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    private final SubscriptionTypeService subscriptionTypeService;
     @GetMapping
-    private ResponseEntity<?> getAll() {
-      return subscriptionTypeService.getAll();
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<?> getAll() {
+        return subscriptionTypeService.getAll();
     }
-   @PreAuthorize("hasRole('ROLE_ADMIN')")
-   @PostMapping
-   private ResponseEntity<?> save(@RequestBody SubscriptionTypeDto dto) {
-       return subscriptionTypeService.save(dto);
-   }
-   @PreAuthorize("hasRole('ROLE_ADMIN')")
-   @PutMapping("/{id}")
-   private ResponseEntity<?> update(@PathVariable UUID id, @RequestBody SubscriptionTypeDto dto) {
-       return subscriptionTypeService.update(id,dto);
-   }
-   @PreAuthorize("hasRole('ROLE_ADMIN')")
-   @DeleteMapping("/{id}")
-   private ResponseEntity<?> delete(@PathVariable UUID id) {
-      return subscriptionTypeService.deleteItem(id);
-   }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping
+    public ResponseEntity<?> save(@RequestBody SubscriptionTypeDto dto) {
+        return subscriptionTypeService.save(dto);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable UUID id, @RequestBody SubscriptionTypeDto dto) {
+        return subscriptionTypeService.update(id, dto);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable UUID id) {
+        return subscriptionTypeService.deleteItem(id);
+    }
 }
