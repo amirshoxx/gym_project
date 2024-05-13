@@ -48,12 +48,12 @@ public class GYMTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "Gym_new_bot";
+        return "beckendone_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "6997658732:AAFNqaIqOOMNaFqQUrq5W25tA47ssI0_6T4";
+        return "6471586814:AAEO3vwCoYbueSFtoYwN4UCaERbhi2gO_5U";
     }
 
     String[] subscriptionInfo = new String[4];

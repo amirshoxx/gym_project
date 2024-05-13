@@ -26,7 +26,9 @@ public class User implements UserDetails {
     private String phoneNumber;
     private String password;
     private String image;
-    private Status status;
+
+    @Enumerated(EnumType.STRING)
+    private Status status=Status.START;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
     @ManyToOne( fetch = FetchType.EAGER)
