@@ -80,7 +80,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Spring Boot.GymBackendApplication">
     <configuration name="GymBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gym-backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.gymbackend.GymBackendApplication" />
@@ -106,8 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="Spring Boot.GymBackendApplication" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
