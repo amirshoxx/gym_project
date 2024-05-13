@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {getAxios} from "./getAxios.jsx";
+import data from "bootstrap/js/src/dom/data.js";
 
 function AddAdmin() {
     const {id} = useParams()
@@ -12,10 +13,22 @@ function AddAdmin() {
     })
     const [admins, setAdmins] = useState([])
 
+
+    useEffect(() => {
+        getAdmin()
+    }, [])
+
+    function getAdmin() {
+        getAxios({url: "/admin?id=" + id, method: "GET"}).then(({data}) => {
+            setAdmins(data)
+        })
+    }
+
     function addAdmin() {
         getAxios({url: "/admin", method: "PUT", data: admin}).then(({data}) => {
             setAdmins(data)
             setAdmin({...admin, fullName: "", phoneNumber: "", password: "", gymId: ""})
+
         })
     }
 
@@ -61,10 +74,16 @@ function AddAdmin() {
                 </button>
             </div>
             <hr/>
+
             <div>
-                <ul className={"list-group"}>
-                    {admins.map((itm) => <li key={itm.id} className={"list-group-item"}>
-                        Name: {itm.fullName} Phone: {itm.phoneNumber} password: {itm.password}
+                <ul className={"list-group "}>
+                    {admins.map((itm) => <li key={itm.id} className={"list-group-item d-flex justify-content-around"}>
+                        <div><b>Name</b> : {itm.fullName}</div>
+                        <div><b>Phone</b> : {itm.phoneNumber} </div>
+                        <div><b>password</b> : {itm.password}</div>
+                        <div>
+                            <button className={"btn btn-warning rounded-0 shadow"}>Edit</button>
+                        </div>
                     </li>)}
                 </ul>
             </div>

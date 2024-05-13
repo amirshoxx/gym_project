@@ -28,10 +28,11 @@ public class User implements UserDetails {
     private String image;
 
     @Enumerated(EnumType.STRING)
-    private Status status=Status.START;
+    private Status status = Status.START;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
-    @ManyToOne( fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Gym gym;
 
     public User(Long chatId) {
@@ -61,7 +62,6 @@ public class User implements UserDetails {
     }
 
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
@@ -72,10 +72,12 @@ public class User implements UserDetails {
         return phoneNumber;
 
     }
+
     @Override
     public String getPassword() {
         return password;
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
