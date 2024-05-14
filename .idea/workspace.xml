@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26d5936-cc02-4d37-8fa6-17d196245600" name="Changes" comment="add subscription">
-      <change afterPath="$PROJECT_DIR$/gym-frontend/src/subscription/Subscription.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gym-frontend/src/users/photo_2024-05-13_13-34-55.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/config/SpringConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/SubscriptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/SubscriptionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/dto/SubscriptionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/dto/SubscriptionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/entity/Subscription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/projection/SubscriptionProjection.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/projection/SubscriptionProjection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/SubscriptionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/SubscriptionRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/repository/UserRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/subscriptions/SubscriptionImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/subscriptions/SubscriptionImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/subscriptions/SubscriptionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/subscriptions/SubscriptionsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/user/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/users/User.css" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/users/User.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gym-frontend/src/users/User.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/users/User.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +89,7 @@
       <recent name="org.example.gymbackend.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GymBackendApplication">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-backend" />
       <extension name="coverage">
@@ -180,8 +162,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GymBackendApplication" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="Spring Boot.GymBackendApplication" />
         <item itemvalue="JUnit.UserServiceImplTest.getAllUsers" />
         <item itemvalue="JUnit.UserServiceImplTest.save" />
         <item itemvalue="JUnit.UserServiceImplTest" />
@@ -227,6 +209,8 @@
       <workItem from="1715662367327" duration="637000" />
       <workItem from="1715663300053" duration="342000" />
       <workItem from="1715664046363" duration="818000" />
+      <workItem from="1715664975176" duration="733000" />
+      <workItem from="1715666005489" duration="910000" />
     </task>
     <task id="LOCAL-00002" summary="amir">
       <option name="closed" value="true" />

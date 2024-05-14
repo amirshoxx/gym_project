@@ -24,6 +24,7 @@ function User() {
     const [subsc, setSubsc] = useState([]);
     const [subscription,setSubscription] = useState([])
     const [visable,setVisable] = useState(false)
+    const [open,setOpenModal] = useState(false)
     const [subjectId,setSubjectId] = useState("")
     function getSubscription(){
         apiCall("/subscription","GET",{},{Authorization:localStorage.getItem("access_token")}).then(res=>{
@@ -40,6 +41,10 @@ function User() {
 
     function openModal(){
         setVisable(!visable)
+    }
+
+    function openRodal(){
+        setOpenModal(!open)
     }
 
     useEffect(() => {
@@ -87,6 +92,7 @@ function User() {
          setSelectedFile(image)
         setSelectFullName(fullName)
         setSelectPhone(phoneNumber)
+        openRodal()
     }
     function getSubscriptionType(){
         apiCall("/subscriptionType", "GET", {},{Authorization:localStorage.getItem("access_token")})
@@ -102,6 +108,7 @@ function User() {
 
 
     function saveSubscription() {
+        openRodal()
         apiCall("/subscription", "POST", {
             userId:  userId && userId,
             image:selectedFile?selectedFile:user,
@@ -125,6 +132,7 @@ function User() {
     }
 
     function isCome(id) {
+        setOpenModal(false)
         apiCall("/subscription?id="+id,"PATCH",{},{Authorization:localStorage.getItem("access_token")}).then(res=>{
             getSubscription()
             if(res.data.status === false){
@@ -167,12 +175,14 @@ function User() {
              subscriptionId:selectSubsc
         },{Authorization:localStorage.getItem("access_token")}).then(res=>{
             getSubscription()
+            toast.success(res.data)
         }).catch(()=>{
             apiCall("/user/refresh", "POST", {}, { refreshToken : localStorage.getItem("refresh_token") })
                 .then(res => {
                     localStorage.setItem("access_token", res.data);
                     getSubscription()
                 })
+            setVisable(false)
         })
     }
 
@@ -187,26 +197,15 @@ function User() {
                             subsc.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)
                         }
                     </select>
-                <button onClick={()=>subscriptionEdite()}>save</button>
+                <button className={"btn btn-dark"} onClick={()=>subscriptionEdite()}>save</button>
             </Rodal>
-            <ToastContainer/>
-            <div className={"register-header"}>
-                Users
-            </div>
-            <div className={"card-login"}>
-                <p className={"text-info"}>Qidiruv:</p>
-                <input
-                    value={phone}
-                    onChange={(e)=>searchs(e.target.value)}
-                    className={"form-control my-2 bg-transparent text-info"}
-                    placeholder={"+998*******"}
-                    type={"text"}
-                />
+            <Rodal visible={open} onClose={openRodal} width={800} height={500}>
                 <div className={"d-flex justify-content-between"}>
-                    <div style={{width:300+"px"}}>
+                    <div style={{width: 300 + "px"}}>
                         {
-                            selectedFile ?  <img className={"w-100 h-100"}
-                                 src={`http://localhost:8080/fileController?image=${selectedFile}`} alt=""/> :<h1 className={"text-info"}>PHOTO</h1>
+                            selectedFile ? <img className={"w-100 h-100"}
+                                                src={`http://localhost:8080/fileController?image=${selectedFile}`}
+                                                alt=""/> : <h1 className={"text-info"}>PHOTO</h1>
                         }
                     </div>
                     <div className={"w-50 d-flex flex-column m-2"}>
@@ -214,7 +213,7 @@ function User() {
                             <h3 className={"text-info"}>Name: </h3>
                             {
                                 selectFullName ?
-                                    <input value={selectFullName} className={"form-control text-light bg-transparent "}
+                                    <input value={selectFullName} className={"form-control  bg-transparent "}
                                            type="text"/> :
                                     <input className={"form-control text-light bg-transparent"} value={fullName}
                                            onChange={(e) => setFullName(e.target.value)} type="text"/>
@@ -226,7 +225,7 @@ function User() {
                             <h3 className={"text-info"}>Phone: </h3>
                             {
                                 selectPhone ?
-                                    <input value={selectPhone} className={"form-control text-light bg-transparent"}
+                                    <input value={selectPhone} className={"form-control  bg-transparent"}
                                            type="text"/> :
                                     <input className={"form-control text-light  bg-transparent"} value={phone}
                                            onChange={(e) => setPhone(e.target.value)} type="text"/>
@@ -250,9 +249,26 @@ function User() {
                         </div>
                     </div>
                     <div>
-                        ds
                     </div>
                 </div>
+            </Rodal>
+            <ToastContainer/>
+            <div className={"register-header"}>
+                Users
+            </div>
+            <div className={"card-login"}>
+                <p className={"text-info"}>Qidiruv:</p>
+                <div className={"d-flex"}>
+                    <input
+                        value={phone}
+                        onChange={(e) => searchs(e.target.value)}
+                        className={"form-control w-50 my-2 bg-transparent text-info"}
+                        placeholder={"+998*******"}
+                        type={"text"}
+                    />
+                    <button onClick={()=>openRodal()} className={"btn btn-info m-2"} style={{width:'95px'}}>+</button>
+                </div>
+
                 <table className={"text-light table-dark table w-100"}>
                     <thead>
                     <tr>
@@ -273,7 +289,7 @@ function User() {
                     <tbody>
                     {
                         subscription && subscription.map((u, i) => (
-                            <tr key={u.id} onClick={()=>selectUser(u)}>
+                            <tr key={u.id} onClick={() => selectUser(u)}>
                                 <td>{i + 1}</td>
                                 <td>
                                     <img src={`http://localhost:8080/fileController?image=${u.image}`} alt=""/>
@@ -292,7 +308,8 @@ function User() {
                                         u.startTime ?
                                             <div>
                                                 {
-                                                    u.dayCount <= 0 ? <button onClick={()=>selectSubject(u.id)} className={"btn btn-outline-success"}>Select</button> :
+                                                    u.dayCount <= 0 ? <button onClick={() => selectSubject(u.id)}
+                                                                              className={"btn btn-outline-success"}>Select</button> :
                                                         <button onClick={() => isCome(u.id)}
                                                                 className={"btn btn-outline-info"}>Tasdiqlash</button>
 

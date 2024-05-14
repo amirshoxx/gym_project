@@ -104,14 +104,18 @@ public class SubscriptionImpl implements SubscriptionsService {
     public HttpEntity<?> selectSubject(SubscriptionDto dto , UUID subscId) {
         SubscriptionType subscriptionType = subscriptionRepo.findById(dto.subscriptionId()).get();
         Subscription subscription = repo.findById(subscId).get();
-        subscription.setName(subscriptionType.getName());
-        subscription.setStatus(true);
-        subscription.setPrice(subscriptionType.getPrice());
+        if(subscription.getDayCount()<=0){
+            subscription.setName(subscriptionType.getName());
+            subscription.setStatus(true);
+            subscription.setPrice(subscriptionType.getPrice());
             subscription.setStartTime(LocalDate.now());
             subscription.setDayCount(subscriptionType.getDayCount());
             subscription.setEndTime(LocalDate.now().plusDays(subscriptionType.getDayCount()));
-        Subscription save = repo.save(subscription);
-        return ResponseEntity.ok(save);
+          repo.save(subscription);
+            return ResponseEntity.ok("Tarifingiz muvafaqiyati qo'shildi");
+        }   else {
+            return ResponseEntity.ok("Tarifingiz mavjud");
+        }
     }
 
     @Override
