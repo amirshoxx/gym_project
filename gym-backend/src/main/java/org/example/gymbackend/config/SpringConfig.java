@@ -49,6 +49,7 @@ public class SpringConfig {
                         .requestMatchers("/subscription").permitAll()
                         .requestMatchers("/subscriptionType").permitAll()
                         .requestMatchers("/subscription/search").permitAll()
+                        .requestMatchers("/subscription/select/subscription").permitAll()
                         .anyRequest().authenticated()
         ).addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
