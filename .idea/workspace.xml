@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e26d5936-cc02-4d37-8fa6-17d196245600" name="Changes" comment="amir">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/App.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +79,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Spring Boot.GymBackendApplication">
     <configuration name="GymBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gym-backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.gymbackend.GymBackendApplication" />
@@ -104,8 +105,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="Spring Boot.GymBackendApplication" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
