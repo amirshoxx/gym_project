@@ -3,6 +3,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.gymbackend.dto.LoginDto;
 import org.example.gymbackend.dto.RegisterDto;
 import org.example.gymbackend.service.auth.AuthService;
+import org.example.gymbackend.service.jwt.JwtService;
 import org.example.gymbackend.service.user.UserService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,13 +19,18 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
     private final AuthService authService;
+    private final JwtService jwtService;
     @GetMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public HttpEntity<?> getAllUsers(){
         HttpEntity<?> allUsers = userService.getAllUsers();
         return allUsers;
     }
-
+    @GetMapping("/getId")
+    public HttpEntity<?> getUserId(@RequestHeader String refreshToken){
+        UUID userId = UUID.fromString(jwtService.extractJwt(refreshToken).getPayload().getSubject());
+        return ResponseEntity.ok(userId);
+    }
     @PostMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public HttpEntity<?> savePost(@RequestBody RegisterDto registerDto){

@@ -11,7 +11,12 @@ import java.util.UUID;
 @Repository
 public interface UserRepo extends JpaRepository<User, UUID> {
     Optional<User> findByFullName(String fullName);
+
     Optional<User> findAllByChatId(Long chatId);
  Optional<User> findByPhoneNumber(String phoneNumber);
+
+    List<User> findByGym_Id(UUID id);
+
+    List<User> getAllByPhoneNumberContainingIgnoreCase(String phoneNumber);
 }
 

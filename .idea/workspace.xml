@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26d5936-cc02-4d37-8fa6-17d196245600" name="Changes" comment="add subscription">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/subscriptions/SubscriptionImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/subscriptions/SubscriptionImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/users/User.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/users/User.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/auth/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/service/auth/AuthServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +18,6 @@
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -38,40 +35,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.UserServiceImplTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.getAllUsers.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.save.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.User.jsx.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.GymBackendApplication.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/gym_project/gym-frontend/src/users&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.UserServiceImplTest.executor": "Run",
+    "JUnit.UserServiceImplTest.getAllUsers.executor": "Run",
+    "JUnit.UserServiceImplTest.save.executor": "Run",
+    "Node.js.User.jsx.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.GymBackendApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/user/IdeaProjects/gym_project/gym-frontend/src/users",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
-    ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;PostgreSQL&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\gym_project\gym-frontend\src\users" />
@@ -80,8 +74,8 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\user\IdeaProjects\gym_project\gym-frontend\src\users" />
       <recent name="C:\Users\user\IdeaProjects\gym_project\gym-backend\src\main\resources" />
+      <recent name="C:\Users\user\IdeaProjects\gym_project\gym-frontend\src\users" />
       <recent name="C:\Users\user\IdeaProjects\gym_project\gym-frontend\src" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
@@ -200,17 +194,7 @@
       <workItem from="1715409835977" duration="345000" />
       <workItem from="1715414945802" duration="15519000" />
       <workItem from="1715430750086" duration="131000" />
-      <workItem from="1715501226140" duration="19081000" />
-      <workItem from="1715573437799" duration="6411000" />
-      <workItem from="1715580207812" duration="307000" />
-      <workItem from="1715580854411" duration="5471000" />
-      <workItem from="1715589890463" duration="14302000" />
-      <workItem from="1715661066669" duration="974000" />
-      <workItem from="1715662367327" duration="637000" />
-      <workItem from="1715663300053" duration="342000" />
-      <workItem from="1715664046363" duration="818000" />
-      <workItem from="1715664975176" duration="733000" />
-      <workItem from="1715666005489" duration="910000" />
+      <workItem from="1715501226140" duration="18717000" />
     </task>
     <task id="LOCAL-00002" summary="amir">
       <option name="closed" value="true" />
@@ -244,15 +228,7 @@
       <option name="project" value="LOCAL" />
       <updated>1715519587938</updated>
     </task>
-    <task id="LOCAL-00006" summary="add subscription">
-      <option name="closed" value="true" />
-      <created>1715520259803</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1715520259803</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

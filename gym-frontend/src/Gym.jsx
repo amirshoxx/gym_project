@@ -16,12 +16,10 @@ function Gym() {
     useEffect(() => {
         getGym()
     }, [])
-
-
     let navigate = useNavigate();
 
-    function navigateAdmin() {
-        navigate("/addAdmin")
+    function navigateAdmin(id) {
+        navigate(`/addAdmin/${id}`)
     }
 
     function getGym() {
@@ -33,6 +31,8 @@ function Gym() {
     function postGym() {
         axios({url: "http://localhost:8080/gym", method: "POST", data: gym}).then(()=>{
             getGym()
+            setGym({...gym,name:"",location: ""})
+
         })
     }
 
@@ -45,10 +45,10 @@ function Gym() {
     return (
         <div className={"container"}>
             <div className={"d-flex py-3 justify-content-center"}>
-                <input onChange={(e) => {
+                <input value={gym.name} onChange={(e) => {
                     setGym({...gym, name: e.target.value})
                 }} placeholder={"Zalning nomi"} className={"form-control m-1 w-25 shadow"}/>
-                <input onChange={(e) => {
+                <input value={gym.location} onChange={(e) => {
                     setGym({...gym, location: e.target.value})
                 }} placeholder={"Zalning manzili"} className={"form-control m-1 w-25 shadow"}/>
                 <button onClick={() => postGym()} className={"btn btn-primary shadow"}>Add GYM</button>
@@ -71,7 +71,7 @@ function Gym() {
                             <td>{itm.name}</td>
                             <td>{itm.location}</td>
                             <td>
-                                <button onClick={() => navigateAdmin()} className={"btn btn-success rounded-0 shadow"}>Admin
+                                <button onClick={() => navigateAdmin(itm.id)} className={"btn btn-success rounded-0 shadow"}>Admin
                                 </button>
                                 <button onClick={()=>deleteGym(itm.id)} className={"btn btn-danger rounded-0 shadow"}>Delete
                                 </button>

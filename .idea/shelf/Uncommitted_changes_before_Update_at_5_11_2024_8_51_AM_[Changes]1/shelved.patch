@@ -1,0 +1,32 @@
+Index: gym-frontend/src/Gym.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {useNavigate} from \"react-router-dom\";\r\nimport {useEffect, useState} from \"react\";\r\nimport axios from \"axios\";\r\nimport {getAxios} from \"./getAxios.jsx\";\r\n\r\n\r\n\r\nfunction Gym() {\r\n\r\n    const [gym, setGym] = useState({\r\n        name: \"\",\r\n        location: \"\"\r\n    })\r\n    const [gyms, setGyms] = useState([])\r\n\r\n    useEffect(() => {\r\n        getGym()\r\n    }, [])\r\n\r\n\r\n    let navigate = useNavigate();\r\n\r\n    function navigateAdmin() {\r\n        navigate(\"/addAdmin\")\r\n    }\r\n\r\n    function getGym() {\r\n        getAxios({url: \"http://localhost:8080/gym\", method: \"GET\"}).then(({data}) => {\r\n            setGyms(data)\r\n        })\r\n    }\r\n\r\n    function postGym() {\r\n        axios({url: \"http://localhost:8080/gym\", method: \"POST\", data: gym}).then(()=>{\r\n            getGym()\r\n        })\r\n    }\r\n\r\n    function deleteGym(id) {\r\n        axios({url: \"http://localhost:8080/gym?id=\"+id, method: \"DELETE\"}).then(()=>{\r\n            getGym()\r\n        })\r\n    }\r\n\r\n    return (\r\n        <div className={\"container\"}>\r\n            <div className={\"d-flex py-3 justify-content-center\"}>\r\n                <input onChange={(e) => {\r\n                    setGym({...gym, name: e.target.value})\r\n                }} placeholder={\"Zalning nomi\"} className={\"form-control m-1 w-25 shadow\"}/>\r\n                <input onChange={(e) => {\r\n                    setGym({...gym, location: e.target.value})\r\n                }} placeholder={\"Zalning manzili\"} className={\"form-control m-1 w-25 shadow\"}/>\r\n                <button onClick={() => postGym()} className={\"btn btn-primary shadow\"}>Add GYM</button>\r\n            </div>\r\n            <hr/>\r\n            <div>\r\n                <table className={\" table table-striped\"}>\r\n                    <thead>\r\n                    <tr>\r\n                        <th>#</th>\r\n                        <th>Zal nomi</th>\r\n                        <th>Zal lokatsiyasi</th>\r\n                        <th>Action</th>\r\n                    </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                    {\r\n                        gyms.map((itm, index) => <tr key={itm.id}>\r\n                            <td>{index + 1}</td>\r\n                            <td>{itm.name}</td>\r\n                            <td>{itm.location}</td>\r\n                            <td>\r\n                                <button onClick={() => navigateAdmin()} className={\"btn btn-success rounded-0 shadow\"}>Admin\r\n                                </button>\r\n                                <button onClick={()=>deleteGym(itm.id)} className={\"btn btn-danger rounded-0 shadow\"}>Delete\r\n                                </button>\r\n                            </td>\r\n                        </tr>)\r\n                    }\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n        </div>\r\n    );\r\n}\r\n\r\nexport default Gym;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gym-frontend/src/Gym.jsx b/gym-frontend/src/Gym.jsx
+--- a/gym-frontend/src/Gym.jsx	
++++ b/gym-frontend/src/Gym.jsx	
+@@ -33,6 +33,8 @@
+     function postGym() {
+         axios({url: "http://localhost:8080/gym", method: "POST", data: gym}).then(()=>{
+             getGym()
++            setGym({...gym,name:"",location: ""})
++
+         })
+     }
+ 
+@@ -45,10 +47,10 @@
+     return (
+         <div className={"container"}>
+             <div className={"d-flex py-3 justify-content-center"}>
+-                <input onChange={(e) => {
++                <input value={gym.name} onChange={(e) => {
+                     setGym({...gym, name: e.target.value})
+                 }} placeholder={"Zalning nomi"} className={"form-control m-1 w-25 shadow"}/>
+-                <input onChange={(e) => {
++                <input value={gym.location} onChange={(e) => {
+                     setGym({...gym, location: e.target.value})
+                 }} placeholder={"Zalning manzili"} className={"form-control m-1 w-25 shadow"}/>
+                 <button onClick={() => postGym()} className={"btn btn-primary shadow"}>Add GYM</button>
