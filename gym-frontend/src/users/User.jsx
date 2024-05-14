@@ -133,6 +133,7 @@ function User() {
 
     function isCome(id) {
         setOpenModal(false)
+        setVisable(false)
         apiCall("/subscription?id="+id,"PATCH",{},{Authorization:localStorage.getItem("access_token")}).then(res=>{
             getSubscription()
             if(res.data.status === false){
@@ -222,7 +223,7 @@ function User() {
                                 selectFullName ?
                                     <input value={selectFullName} className={"form-control  bg-transparent "}
                                            type="text"/> :
-                                    <input className={"form-control text-light bg-transparent"} value={fullName}
+                                    <input className={"form-control  bg-transparent"} value={fullName}
                                            onChange={(e) => setFullName(e.target.value)} type="text"/>
                             }
 
@@ -234,7 +235,7 @@ function User() {
                                 selectPhone ?
                                     <input value={selectPhone} className={"form-control  bg-transparent"}
                                            type="text"/> :
-                                    <input className={"form-control text-light  bg-transparent"} value={phone}
+                                    <input className={"form-control  bg-transparent"} value={phone}
                                            onChange={(e) => setPhone(e.target.value)} type="text"/>
                             }
                         </div>
@@ -296,20 +297,20 @@ function User() {
                     <tbody>
                     {
                         subscription && subscription.map((u, i) => (
-                            <tr key={u.id} onClick={() => selectUser(u)}>
-                                <td>{i + 1}</td>
+                            <tr key={u.id} >
+                                <td onClick={() => selectUser(u)}>{i + 1}</td>
                                 <td>
                                     <img src={`http://localhost:8080/fileController?image=${u.image}`} alt=""/>
                                 </td>
-                                <td>{u.fullName}</td>
-                                <td>{u.phoneNumber}</td>
-                                <td>{u.name}</td>
-                                <td>{u.price}</td>
-                                <td>{u.startTime}</td>
-                                <td>{u.status ? "QATNASHYAPTI" : "KETGAN"}</td>
-                                <td>{u.limited ? "HARKUNLIK" : "KUN ORA"}</td>
-                                <td>{u.endTime}</td>
-                                <td>{u.dayCount}</td>
+                                <td onClick={() => selectUser(u)}>{u.fullName}</td>
+                                <td onClick={() => selectUser(u)}>{u.phoneNumber}</td>
+                                <td onClick={() => selectUser(u)}>{u.name}</td>
+                                <td onClick={() => selectUser(u)}>{u.price}</td>
+                                <td onClick={() => selectUser(u)}>{u.startTime}</td>
+                                <td onClick={() => selectUser(u)}>{u.status ? "QATNASHYAPTI" : "KETGAN"}</td>
+                                <td onClick={() => selectUser(u)}>{u.limited ? "HARKUNLIK" : "KUN ORA"}</td>
+                                <td onClick={() => selectUser(u)}>{u.endTime}</td>
+                                <td onClick={() => selectUser(u)}>{u.dayCount}</td>
                                 <td>
                                     {
                                         u.startTime ?
