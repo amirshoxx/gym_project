@@ -160,6 +160,13 @@ function User() {
                 })
         })
     }
+    function openFunc(){
+        setSelectSubsc("")
+        setSelectedFile("")
+        setSelectFullName("")
+        setSelectPhone("")
+        openRodal()
+    }
 
     function selectSubject(id) {
             openModal()
@@ -266,7 +273,7 @@ function User() {
                         placeholder={"+998*******"}
                         type={"text"}
                     />
-                    <button onClick={()=>openRodal()} className={"btn btn-info m-2"} style={{width:'95px'}}>+</button>
+                    <button onClick={()=>openFunc()} className={"btn btn-info m-2"} style={{width:'95px'}}>+</button>
                 </div>
 
                 <table className={"text-light table-dark table w-100"}>
