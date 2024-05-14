@@ -2,6 +2,7 @@ import "react"
 import {Route, Routes} from "react-router-dom";
 import Login from "./auth/Login.jsx";
 import Home from "./home/Home.jsx";
+import SubHistory from "./users/SubHistory.jsx";
 // import SuperAdmin from "./auth/Super_Admin.jsx";
 import Gym from "./Gym.jsx";
 import SuperAdmin from "./SuperAdmin.jsx";
@@ -20,10 +21,9 @@ function App() {
           <Route path={"/superAdmin"} element={<SuperAdmin/>} />
           <Route path={"/superSettings"} element={<SuperSettings/>} />
           <Route path={"/addAdmin"} element={<AddAdmin/>} />
-          <Route path={"/users"} element={<User/>} />
+            <Route path={"/users"} element={<User/>} />
+            <Route path={"/history"} element={<SubHistory/>} />
             <Route path={"/404"} element={<ErrorPage/>} />
-
-
         </Routes>
   );
 }
