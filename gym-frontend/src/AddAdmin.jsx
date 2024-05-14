@@ -24,6 +24,7 @@ function AddAdmin() {
     function getAdmin() {
         getAxios({url: "/admin?id=" + id, method: "GET"}).then(({data}) => {
             setAdmins(data)
+            console.log(data)
         })
     }
 
@@ -75,9 +76,9 @@ function AddAdmin() {
             <div>
                 <ul className={"list-group "}>
                     {admins.map((itm) => <li key={itm.id} className={"list-group-item d-flex justify-content-around"}>
-                        <div><b>Name</b> : {itm.fullName}</div>
+                        <div><b className={"text-success"}>Name</b> : {itm.fullName}</div>
                         <div><b>Phone</b> : {itm.phoneNumber} </div>
-                        <div><b>password</b> : {itm.password}</div>
+                        <div><b>Gym name</b> : {itm.gym.name}</div>
                         <div>
                             <button onClick={() => editAdmin(itm.id)}
                                     className={"btn btn-warning rounded-0 shadow"}>Edit
