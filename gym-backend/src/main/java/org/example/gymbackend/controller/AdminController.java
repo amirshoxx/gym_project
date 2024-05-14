@@ -39,17 +39,28 @@ public class AdminController {
     @GetMapping
     public ResponseEntity<?> getAdmin(@RequestParam UUID id) {
 
+
         List<User> byGymId = userRepo.findByGym_Id(id);
+
         return ResponseEntity.ok(byGymId);
     }
 
+    @PutMapping("/edit")
+    public ResponseEntity<?> editAdmin(@RequestBody @Valid AdminDto adminDto, @RequestParam UUID id) {
 
-    //    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+        User user = userRepo.findById(id).orElseThrow();
+        user.setFullName(adminDto.getFullName());
+        user.setPhoneNumber(adminDto.getPhoneNumber());
+        user.setPassword(adminDto.getPassword());
+        userRepo.save(user);
+
+        return ResponseEntity.ok("Admin ozgartirildi!!!");
+    }
+
+
     @PutMapping
     public ResponseEntity<?> saveAdmin(@RequestBody @Valid AdminDto adminDto) {
 
-
-        System.out.println(adminDto);
         Gym gym = gymRepo.findById(UUID.fromString(adminDto.getGymId())).orElseThrow();
         List<Role> roleAdmin = roleRepo.findAllByName("ROLE_ADMIN");
         List<User> byPhoneNumber = adminRepo.findByPhoneNumber(adminDto.getPhoneNumber());
@@ -62,15 +73,14 @@ public class AdminController {
                 user.setGym(gym);
                 user.setPassword(passwordEncoder.encode(adminDto.getPassword()));
                 user.setRoles(roleAdmin);
-                List<User> save = Collections.singletonList(userRepo.save(user));
-                return ResponseEntity.ok(save);
-            } else {
-                return ResponseEntity.ok("Oldin kontaktni kiriting!!!");
-
+                userRepo.save(user);
+                return ResponseEntity.ok("Admin qoshildi !!!");
+            } else if (user1.getId() != null) {
+                return ResponseEntity.ok("Admin allaqachon qoshilgan!!!");
             }
         }
 
-        return ResponseEntity.ok("Oldin kontaktni kiriting!!!");
+        return ResponseEntity.ok("Oldin kontaktni telegram botdan kiriting!!!");
 
     }
 }

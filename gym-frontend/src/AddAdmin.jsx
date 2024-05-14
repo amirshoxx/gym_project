@@ -1,16 +1,19 @@
 import {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {getAxios} from "./getAxios.jsx";
-import data from "bootstrap/js/src/dom/data.js";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddAdmin() {
     const {id} = useParams()
+    const [userId, setId] = useState("")
     const [admin, setAdmin] = useState({
         fullName: "",
         phoneNumber: "",
         password: "",
         gymId: id
     })
+
     const [admins, setAdmins] = useState([])
 
 
@@ -25,43 +28,37 @@ function AddAdmin() {
     }
 
     function addAdmin() {
-        getAxios({url: "/admin", method: "PUT", data: admin}).then(({data}) => {
-            setAdmins(data)
-            setAdmin({...admin, fullName: "", phoneNumber: "", password: "", gymId: ""})
+        if (userId===""){
+            getAxios({url: "/admin", method: "PUT", data: admin}).then(({data}) => {
+                setAdmin({...admin, fullName: "", phoneNumber: "", password: "", gymId: ""})
+                toast.success(data)
+                getAdmin()
+            })
+        }else {
+            getAxios({url: "/admin/edit?id="+id, method: "PUT", data: admin}).then(({data}) => {
+                setAdmin({...admin, fullName: "", phoneNumber: "", password: "", gymId: ""})
+                toast.success(data)
+                getAdmin()
+            })
+        }
 
-        })
     }
 
-    const navigets = useNavigate();
+    function editAdmin(id) {
+        admin.fullName=admins[id].fullName
+        admin.phoneNumber=admins[id].phoneNumber
+        admin.password=admins[id].password
+        setId(id);
+    }
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             if (localStorage.getItem("access_token")) {
-    //                 const response = await apiCall("/user/admin", "GET", {}, { Authorization: localStorage.getItem("access_token") });
-    //                 if (response.data === "admin") {
-    //                     console.log("User is a super admin");
-    //                 } else {
-    //                     navigets("/login");
-    //                 }
-    //             } else {
-    //                 navigets("/login");
-    //             }
-    //         } catch (error) {
-    //             navigets("/login");
-    //         }
-    //     };
-    //
-    //     fetchData();
-    // }, [navigets]);
 
     return (
         <div className={"container"}>
-
+            <ToastContainer/>
             <h1 className={" text-center"}> Add Admin To Gym </h1>
             <div className={"d-flex"}>
 
-                <input className={"form-control shadow m-1 rounded-0 w-25"} type={"text"} value={admin.fullName}
+                <input  className={"form-control shadow m-1 rounded-0 w-25"} type={"text"} value={admin.fullName}
                        onChange={(e) => setAdmin({...admin, fullName: e.target.value})}
                        placeholder={"Ism..."}/>
                 <input className={"form-control shadow m-1 rounded-0 w-25"} type={"text"} value={admin.phoneNumber}
@@ -82,7 +79,9 @@ function AddAdmin() {
                         <div><b>Phone</b> : {itm.phoneNumber} </div>
                         <div><b>password</b> : {itm.password}</div>
                         <div>
-                            <button className={"btn btn-warning rounded-0 shadow"}>Edit</button>
+                            <button onClick={() => editAdmin(itm.id)}
+                                    className={"btn btn-warning rounded-0 shadow"}>Edit
+                            </button>
                         </div>
                     </li>)}
                 </ul>

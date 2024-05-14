@@ -40,7 +40,7 @@ public class SpringConfig {
                         .requestMatchers("/user/login").permitAll()
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/gym").permitAll()
-                        .requestMatchers("/admin").permitAll()
+                        .requestMatchers("/admin","admin/edit").permitAll()
                         .requestMatchers("/super_admin").permitAll()
                         .requestMatchers("/user/refresh").permitAll()
                         .requestMatchers("/user","/user/admins","/user/super_admins","/user/admin","user/getId").permitAll()
