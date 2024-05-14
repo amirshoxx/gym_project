@@ -51,7 +51,7 @@ public class AdminController {
         User user = userRepo.findById(id).orElseThrow();
         user.setFullName(adminDto.getFullName());
         user.setPhoneNumber(adminDto.getPhoneNumber());
-        user.setPassword(adminDto.getPassword());
+        user.setPassword(passwordEncoder.encode(adminDto.getPassword()));
         userRepo.save(user);
 
         return ResponseEntity.ok("Admin ozgartirildi!!!");

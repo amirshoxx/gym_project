@@ -2,8 +2,8 @@ import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {getAxios} from "./getAxios.jsx";
-
-
+import Rodal from 'rodal';
+import 'rodal/lib/rodal.css';
 
 function Gym() {
 
@@ -11,7 +11,17 @@ function Gym() {
         name: "",
         location: ""
     })
+    const [gymid, setgymid] = useState("")
     const [gyms, setGyms] = useState([])
+    const [visible, setVisible] = useState(false);
+    const showModal = (id) => {
+        setgymid(id)
+        setVisible(true);
+    };
+
+    const hideModal = () => {
+        setVisible(false);
+    };
 
     useEffect(() => {
         getGym()
@@ -29,21 +39,35 @@ function Gym() {
     }
 
     function postGym() {
-        axios({url: "http://localhost:8080/gym", method: "POST", data: gym}).then(()=>{
+        axios({url: "http://localhost:8080/gym", method: "POST", data: gym}).then(() => {
             getGym()
-            setGym({...gym,name:"",location: ""})
+            setGym({...gym, name: "", location: ""})
 
         })
     }
 
-    function deleteGym(id) {
-        axios({url: "http://localhost:8080/gym?id="+id, method: "DELETE"}).then(()=>{
+
+    const deleteContent = () => {
+        axios({url: "http://localhost:8080/gym?id=" + gymid, method: "DELETE"}).then(() => {
             getGym()
         })
-    }
+        setVisible(false);
+    };
+
 
     return (
         <div className={"container"}>
+
+
+            <Rodal visible={visible} onClose={hideModal}>
+                <div className={"text-center py-4"}>
+                    <p>Siz haqiqatdan ham ushbu gymni ochurasizmi?</p>
+                    <button className={"btn btn-danger rounded-0 mx-1"} onClick={deleteContent}>Ha</button>
+                    <button className={"btn btn-warning rounded-0 mx-1"} onClick={hideModal}>yoq</button>
+                </div>
+            </Rodal>
+
+
             <div className={"d-flex py-3 justify-content-center"}>
                 <input value={gym.name} onChange={(e) => {
                     setGym({...gym, name: e.target.value})
@@ -71,9 +95,11 @@ function Gym() {
                             <td>{itm.name}</td>
                             <td>{itm.location}</td>
                             <td>
-                                <button onClick={() => navigateAdmin(itm.id)} className={"btn btn-success rounded-0 shadow"}>Admin
+                                <button onClick={() => navigateAdmin(itm.id)}
+                                        className={"btn btn-success rounded-0 shadow"}>Admin
                                 </button>
-                                <button onClick={()=>deleteGym(itm.id)} className={"btn btn-danger rounded-0 shadow"}>Delete
+                                <button onClick={() => showModal(itm.id)}
+                                        className={"btn btn-danger rounded-0 shadow"}>Delete
                                 </button>
                             </td>
                         </tr>)

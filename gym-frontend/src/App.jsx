@@ -21,12 +21,7 @@ function App() {
           <Route path={"/superSettings"} element={<SuperSettings/>} />
           <Route path={"/addAdmin/:id"} element={<AddAdmin/>} />
           <Route path={"/users"} element={<User/>} />
-          <Route path={"/addAdmin"} element={<AddAdmin/>} />
-            <Route path={"/users"} element={<User/>} />
-            <Route path={"/history"} element={<SubHistory/>} />
             <Route path={"/404"} element={<ErrorPage/>} />
-
-
         </Routes>
   );
 }

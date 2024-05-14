@@ -28,6 +28,7 @@ function AddAdmin() {
     }
 
     function addAdmin() {
+
         if (userId===""){
             getAxios({url: "/admin", method: "PUT", data: admin}).then(({data}) => {
                 setAdmin({...admin, fullName: "", phoneNumber: "", password: "", gymId: ""})
@@ -35,19 +36,21 @@ function AddAdmin() {
                 getAdmin()
             })
         }else {
-            getAxios({url: "/admin/edit?id="+id, method: "PUT", data: admin}).then(({data}) => {
+            getAxios({url: "/admin/edit?id="+userId, method: "PUT", data: admin}).then(({data}) => {
                 setAdmin({...admin, fullName: "", phoneNumber: "", password: "", gymId: ""})
                 toast.success(data)
                 getAdmin()
+                setId("")
             })
         }
 
     }
 
     function editAdmin(id) {
-        admin.fullName=admins[id].fullName
-        admin.phoneNumber=admins[id].phoneNumber
-        admin.password=admins[id].password
+
+        admin.fullName=admins[0].fullName
+        admin.phoneNumber=admins[0].phoneNumber
+        admin.password=admins[0].password
         setId(id);
     }
 
@@ -75,9 +78,9 @@ function AddAdmin() {
             <div>
                 <ul className={"list-group "}>
                     {admins.map((itm) => <li key={itm.id} className={"list-group-item d-flex justify-content-around"}>
-                        <div><b>Name</b> : {itm.fullName}</div>
-                        <div><b>Phone</b> : {itm.phoneNumber} </div>
-                        <div><b>password</b> : {itm.password}</div>
+                        <div><b className={"text-primary"}>Name</b> : {itm.fullName}</div>
+                        <div><b className={"text-primary"}>Phone</b> : {itm.phoneNumber} </div>
+                        <div><b className={"text-primary"}>Gym name</b> : {itm.gym.name}</div>
                         <div>
                             <button onClick={() => editAdmin(itm.id)}
                                     className={"btn btn-warning rounded-0 shadow"}>Edit
