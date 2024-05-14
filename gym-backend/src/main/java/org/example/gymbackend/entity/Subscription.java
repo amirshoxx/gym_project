@@ -22,12 +22,14 @@ public class Subscription {
     private UUID id;
     private LocalDate startTime;
     private LocalDate endTime;
+    private String name;
     @ManyToOne
     private SubscriptionType subscriptionType;
     private Double price;
     private Boolean status;
     private Boolean limited;
     @ManyToOne
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
     private Integer dayCount;
 

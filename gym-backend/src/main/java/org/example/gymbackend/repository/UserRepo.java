@@ -13,6 +13,5 @@ public interface UserRepo extends JpaRepository<User, UUID> {
     Optional<User> findByFullName(String fullName);
     Optional<User> findAllByChatId(Long chatId);
  Optional<User> findByPhoneNumber(String phoneNumber);
- List<User> getAllByPhoneNumberContainingIgnoreCase(String phoneNumber);
 }
 

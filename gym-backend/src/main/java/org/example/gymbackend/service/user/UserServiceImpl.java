@@ -52,11 +52,7 @@ public class UserServiceImpl implements UserService {
         return ResponseEntity.ok(saved);
     }
 
-    @Override
-    public HttpEntity<?> search(String phoneNumber) {
-        List<User> allByPhoneNumberContainingIgnoreCase = userRepo.getAllByPhoneNumberContainingIgnoreCase(phoneNumber);
-        return ResponseEntity.ok(allByPhoneNumberContainingIgnoreCase);
-    }
+
 
 
 }
