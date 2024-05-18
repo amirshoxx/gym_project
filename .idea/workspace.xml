@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e26d5936-cc02-4d37-8fa6-17d196245600" name="Changes" comment="amir">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gym-backend/src/main/java/org/example/gymbackend/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/AddAdmin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/AddAdmin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/Gym.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/Gym.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-frontend/src/SuperAdmin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gym-frontend/src/SuperAdmin.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,9 +41,6 @@
     &quot;accountId&quot;: &quot;6fb82ed8-8c92-4361-b523-d27321d57d94&quot;
   }
 }</component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -69,9 +61,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.GymBackendApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/acer/Desktop/gym_project&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -88,7 +78,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Spring Boot.GymBackendApplication">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="GymBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gym-backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.gymbackend.GymBackendApplication" />
@@ -114,8 +104,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GymBackendApplication" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="Spring Boot.GymBackendApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -148,14 +138,6 @@
       <workItem from="1715393902124" duration="3221000" />
       <workItem from="1715400866755" duration="2464000" />
       <workItem from="1715403434611" duration="16758000" />
-      <workItem from="1715676366477" duration="885000" />
-      <workItem from="1715677291834" duration="5578000" />
-      <workItem from="1715834962825" duration="40000" />
-      <workItem from="1715835361068" duration="84000" />
-      <workItem from="1715835798638" duration="1684000" />
-      <workItem from="1715857319732" duration="8000" />
-      <workItem from="1715861463724" duration="149000" />
-      <workItem from="1715939280992" duration="4008000" />
     </task>
     <task id="LOCAL-00002" summary="amir">
       <option name="closed" value="true" />
@@ -189,23 +171,7 @@
       <option name="project" value="LOCAL" />
       <updated>1715599050327</updated>
     </task>
-    <task id="LOCAL-00006" summary="amir">
-      <option name="closed" value="true" />
-      <created>1715676386603</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1715676386603</updated>
-    </task>
-    <task id="LOCAL-00007" summary="amir">
-      <option name="closed" value="true" />
-      <created>1715677230245</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1715677230245</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

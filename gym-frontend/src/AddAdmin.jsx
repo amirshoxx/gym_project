@@ -36,11 +36,10 @@ function AddAdmin() {
                 getAdmin()
             })
         }else {
-            getAxios({url: "/admin/edit?id="+userId, method: "PUT", data: admin}).then(({data}) => {
+            getAxios({url: "/admin/edit?id="+id, method: "PUT", data: admin}).then(({data}) => {
                 setAdmin({...admin, fullName: "", phoneNumber: "", password: "", gymId: ""})
                 toast.success(data)
                 getAdmin()
-                setId("")
             })
         }
 
